@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import ContentCards from '@/components/ContentCards';
 import InfoSection from '@/components/InfoSection';
 import Footer from '@/components/Footer';
+import ChatBot from '@/components/ChatBot';
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <ContentCards />
       <InfoSection />
       <Footer />
+      <ChatBot />
     </div>
   );
 };
