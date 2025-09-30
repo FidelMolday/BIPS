@@ -34,7 +34,7 @@ const Navigation = () => {
       ]
     },
     {
-      title: 'About Western',
+      title: 'About BITS',
       items: [
         'Our Story',
         'Leadership',
@@ -99,11 +99,11 @@ const Navigation = () => {
             <div className="flex-shrink-0">
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-primary rounded-sm mr-3 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">W</span>
+                  <span className="text-white font-bold text-lg">B</span>
                 </div>
                 <div className="text-university-dark">
-                  <div className="font-bold text-lg">WESTERN SYDNEY</div>
-                  <div className="text-sm text-university-grey">UNIVERSITY</div>
+                  <div className="font-bold text-lg">BITS TECHNICAL</div>
+                  <div className="text-sm text-university-grey">COLLEGE</div>
                 </div>
               </div>
             </div>

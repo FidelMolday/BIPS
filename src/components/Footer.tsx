@@ -59,32 +59,32 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <div className="w-10 h-10 bg-primary rounded-sm mr-3 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">W</span>
+                <span className="text-white font-bold text-xl">B</span>
               </div>
               <div>
-                <div className="font-bold text-lg">WESTERN SYDNEY</div>
-                <div className="text-sm text-university-grey">UNIVERSITY</div>
+                <div className="font-bold text-lg">BITS TECHNICAL</div>
+                <div className="text-sm text-university-grey">COLLEGE</div>
               </div>
             </div>
             
             <p className="text-university-grey mb-6 leading-relaxed">
-              Western Sydney University is a world-class institution committed to providing 
-              innovative education and conducting impactful research that benefits our communities.
+              BITS Technical College is a leading institution committed to providing 
+              innovative technical education and skills development that benefits our communities in Kenya.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">Locked Bag 1797, Penrith NSW 2751</span>
+                <span className="text-university-grey">Kiambu Road, Nairobi, Kenya</span>
               </div>
               <div className="flex items-center">
                 <Phone className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">1300 897 669</span>
+                <span className="text-university-grey">+254 700 123 456</span>
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">enquiry@westernsydney.edu.au</span>
+                <span className="text-university-grey">info@bitstechnical.ac.ke</span>
               </div>
             </div>
             
@@ -138,7 +138,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             <div className="flex flex-wrap items-center space-x-6 mb-4 md:mb-0">
               <span className="text-university-grey">
-                © 2024 Western Sydney University. All rights reserved.
+                © 2024 BITS Technical College. All rights reserved.
               </span>
               <a href="#" className="text-university-grey hover:text-white transition-colors">
                 Privacy Policy

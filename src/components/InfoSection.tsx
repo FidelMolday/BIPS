@@ -16,7 +16,7 @@ const InfoSection = () => {
             Leading the Way in Higher Education
           </h2>
           <p className="text-xl text-university-grey mb-12 max-w-3xl mx-auto">
-            Discover why Western Sydney University is the perfect choice for your educational journey
+            Discover why BITS Technical College is the perfect choice for your technical education journey
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
