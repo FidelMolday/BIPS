@@ -51,20 +51,20 @@ const ChatBot = () => {
     <>
       {/* Chat Button */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-4 right-4 z-[9999]">
           <Button
             onClick={() => setIsOpen(true)}
-            className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full h-16 w-16 shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-14 w-14 shadow-2xl transition-all duration-300 hover:scale-110 border-2 border-background"
           >
-            <MessageCircle className="h-8 w-8" />
+            <MessageCircle className="h-7 w-7" />
           </Button>
         </div>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-96 h-[500px] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-2rem)]">
-          <Card className="h-full flex flex-col bg-background border-border shadow-2xl">
+        <div className="fixed bottom-4 right-4 z-[9999] w-96 h-[500px] max-w-[calc(100vw-1rem)] max-h-[calc(100vh-1rem)]">
+          <Card className="h-full flex flex-col bg-background border-border shadow-2xl backdrop-blur-sm">
             {/* Header */}
             <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex items-center justify-between">
               <div className="flex items-center gap-3">
