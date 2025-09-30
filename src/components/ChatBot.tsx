@@ -33,7 +33,7 @@ const ChatBot = () => {
     setTimeout(() => {
       const botResponse = {
         id: Date.now() + 1,
-        text: "Thank you for your message! I'm currently being set up with our knowledge base. Soon I'll be able to help you with information about BITS Technical College programs, admissions, campus life, and more.",
+        text: "Thank you for your message! I'm currently being set up with our knowledge base. Soon I'll be able to help you with information about BIPS Technical College programs, admissions, campus life, and more.",
         isBot: true,
         timestamp: new Date()
       };

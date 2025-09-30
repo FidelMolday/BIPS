@@ -62,13 +62,13 @@ const Footer = () => {
                 <span className="text-white font-bold text-xl">B</span>
               </div>
               <div>
-                <div className="font-bold text-lg">BITS TECHNICAL</div>
+                <div className="font-bold text-lg">BIPS TECHNICAL</div>
                 <div className="text-sm text-university-grey">COLLEGE</div>
               </div>
             </div>
             
             <p className="text-university-grey mb-6 leading-relaxed">
-              BITS Technical College is a leading institution committed to providing 
+              BIPS Technical College is a leading institution committed to providing 
               innovative technical education and skills development that benefits our communities in Kenya.
             </p>
             
@@ -84,7 +84,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">info@bitstechnical.ac.ke</span>
+                <span className="text-university-grey">info@bips.ac.ke</span>
               </div>
             </div>
             
@@ -138,7 +138,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             <div className="flex flex-wrap items-center space-x-6 mb-4 md:mb-0">
               <span className="text-university-grey">
-                © 2024 BITS Technical College. All rights reserved.
+                © 2024 BIPS Technical College. All rights reserved.
               </span>
               <a href="#" className="text-university-grey hover:text-white transition-colors">
                 Privacy Policy

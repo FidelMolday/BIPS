@@ -124,7 +124,7 @@ const HeroSection = () => {
       <div className="bg-university-light-grey border-b">
         <div className="container mx-auto px-4 py-3">
           <p className="text-sm text-university-dark">
-            <strong>BITS Technical College Admissions:</strong> For more information about our admission requirements and application process, please visit our admissions page{' '}
+            <strong>BIPS Technical College Admissions:</strong> For more information about our admission requirements and application process, please visit our admissions page{' '}
             <a href="#" className="text-primary hover:underline font-medium">here</a>.
           </p>
         </div>

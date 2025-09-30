@@ -34,7 +34,7 @@ const Navigation = () => {
       ]
     },
     {
-      title: 'About BITS',
+      title: 'About BIPS',
       items: [
         'Our Story',
         'Leadership',
@@ -102,7 +102,7 @@ const Navigation = () => {
                   <span className="text-white font-bold text-lg">B</span>
                 </div>
                 <div className="text-university-dark">
-                  <div className="font-bold text-lg">BITS TECHNICAL</div>
+                  <div className="font-bold text-lg">BIPS TECHNICAL</div>
                   <div className="text-sm text-university-grey">COLLEGE</div>
                 </div>
               </div>
