@@ -24,15 +24,6 @@ const Navigation = () => {
 
   const navItems = [
     {
-      title: 'Home',
-      items: [
-        'Overview',
-        'News & Events',
-        'Announcements',
-        'Quick Links',
-      ]
-    },
-    {
       title: 'Courses',
       items: [
         'Certificate Courses',
@@ -49,7 +40,6 @@ const Navigation = () => {
         'Vision & Mission',
         'Leadership Team',
         'Campus Facilities',
-        'Accreditation',
       ]
     },
     {
@@ -58,8 +48,6 @@ const Navigation = () => {
         'Entry Requirements',
         'Application Process',
         'Fee Structure',
-        'Scholarships',
-        'Transfer Students',
       ]
     },
     {
@@ -67,8 +55,6 @@ const Navigation = () => {
       items: [
         'Contact Information',
         'Campus Locations',
-        'Enquiries',
-        'Visit Us',
       ]
     },
     {
@@ -123,6 +109,11 @@ const Navigation = () => {
             <div className="hidden lg:block">
               <NavigationMenu>
                 <NavigationMenuList className="space-x-1">
+                  <NavigationMenuItem>
+                    <NavigationMenuLink href="/" className="text-university-dark hover:text-primary font-medium px-4 py-2 inline-block">
+                      Home
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
                   {navItems.map((item) => (
                     <NavigationMenuItem key={item.title}>
                       <NavigationMenuTrigger className="text-university-dark hover:text-primary font-medium">
