@@ -154,10 +154,12 @@ const InfoSection = () => {
                   Alumni network and mentorship
                 </li>
               </ul>
-              <Button variant="university" size="lg" className="h-auto px-8 py-3">
-                Success Stories
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link to="/testimonials">
+                <Button variant="university" size="lg" className="h-auto px-8 py-3">
+                  Success Stories
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </div>
             <div>
               <img 
