@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Search, ChevronDown, Menu, X, Phone } from 'lucide-react';
+import { Search, ChevronDown, Menu, X, Phone, FileText, GraduationCap, BookOpen, Users, MessageSquare, Calendar } from 'lucide-react';
 import { 
   NavigationMenu,
   NavigationMenuContent,
@@ -9,9 +9,18 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '@/components/ui/command';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
     {
@@ -139,7 +148,12 @@ const Navigation = () => {
 
             {/* Search and Mobile Menu */}
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="icon" className="text-university-dark hover:text-primary">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-university-dark hover:text-primary"
+                onClick={() => setIsSearchOpen(true)}
+              >
                 <Search className="w-5 h-5" />
               </Button>
               
@@ -178,6 +192,64 @@ const Navigation = () => {
           </div>
         )}
       </div>
+
+      {/* Search Dialog */}
+      <CommandDialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+        <CommandInput placeholder="Search for courses, pages, or information..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Pages">
+            <CommandItem>
+              <FileText className="mr-2 h-4 w-4" />
+              <span>Home</span>
+            </CommandItem>
+            <CommandItem>
+              <BookOpen className="mr-2 h-4 w-4" />
+              <span>Campus Life</span>
+            </CommandItem>
+            <CommandItem>
+              <Users className="mr-2 h-4 w-4" />
+              <span>Testimonials</span>
+            </CommandItem>
+          </CommandGroup>
+          <CommandGroup heading="Courses">
+            <CommandItem>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Certificate Courses</span>
+            </CommandItem>
+            <CommandItem>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Diploma Programs</span>
+            </CommandItem>
+            <CommandItem>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Higher Diploma</span>
+            </CommandItem>
+            <CommandItem>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Short Courses</span>
+            </CommandItem>
+            <CommandItem>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Online Courses</span>
+            </CommandItem>
+          </CommandGroup>
+          <CommandGroup heading="Information">
+            <CommandItem>
+              <MessageSquare className="mr-2 h-4 w-4" />
+              <span>Contact Information</span>
+            </CommandItem>
+            <CommandItem>
+              <Calendar className="mr-2 h-4 w-4" />
+              <span>Current Intake</span>
+            </CommandItem>
+            <CommandItem>
+              <FileText className="mr-2 h-4 w-4" />
+              <span>Application Process</span>
+            </CommandItem>
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
     </header>
   );
 };
