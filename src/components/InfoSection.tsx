@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Award, Users, TrendingUp } from 'lucide-react';
 import campusImage from '@/assets/campus-life.jpg';
@@ -74,10 +75,12 @@ const InfoSection = () => {
                   Comprehensive support services
                 </li>
               </ul>
-              <Button variant="university" size="lg" className="h-auto px-8 py-3">
-                Explore Campus Life
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link to="/campus-life">
+                <Button variant="university" size="lg" className="h-auto px-8 py-3">
+                  Explore Campus Life
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </div>
             <div className="relative">
               <img 
