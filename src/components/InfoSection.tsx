@@ -26,7 +26,7 @@ const InfoSection = () => {
                 <Award className="w-8 h-8 text-white" />
               </div>
               <div className="text-3xl font-bold text-primary mb-2">Top 200</div>
-              <div className="text-university-grey">Global University Rankings</div>
+              <div className="text-university-grey">Global Colleges Rankings</div>
             </div>
             
             <div className="text-center">

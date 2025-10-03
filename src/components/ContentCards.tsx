@@ -5,28 +5,28 @@ import { ArrowRight, GraduationCap, BookOpen, FileText, Globe } from 'lucide-rea
 const ContentCards = () => {
   const cards = [
     {
-      title: 'Undergraduate Degrees',
+      title: 'Diploma Courses',
       description: 'Explore our comprehensive range of undergraduate programs designed to kickstart your career journey.',
       icon: GraduationCap,
       link: '#',
       color: 'bg-primary'
     },
     {
-      title: 'Postgraduate Degrees',
+      title: 'Certificate Courses',
       description: 'Advance your career with our specialized postgraduate programs and research opportunities.',
       icon: BookOpen,
       link: '#',
       color: 'bg-primary'
     },
     {
-      title: 'Application Pathways',
+      title: 'Artisan Courses',
       description: 'Discover the various pathways to join our university community and start your educational journey.',
       icon: FileText,
       link: '#',
       color: 'bg-primary'
     },
     {
-      title: 'International Students',
+      title: 'Online courses',
       description: 'Learn about our support services and programs specifically designed for international students.',
       icon: Globe,
       link: '#',

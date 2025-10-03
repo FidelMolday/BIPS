@@ -6,12 +6,10 @@ const Footer = () => {
     {
       title: 'Study',
       links: [
-        'Undergraduate',
-        'Postgraduate',
-        'Research Degrees',
+        'Diploma',
+        'Certificate',
+        'Artisan',
         'Online Learning',
-        'International',
-        'Course Search'
       ]
     },
     {
@@ -20,7 +18,6 @@ const Footer = () => {
         'Research Areas',
         'Research Institutes',
         'Research Students',
-        'Publications',
         'Industry Partnerships',
         'Research Support'
       ]
@@ -31,7 +28,6 @@ const Footer = () => {
         'Our Story',
         'Leadership',
         'Campus Locations',
-        'Rankings',
         'News & Events',
         'Careers'
       ]
@@ -39,8 +35,6 @@ const Footer = () => {
     {
       title: 'Support',
       links: [
-        'Current Students',
-        'Student Services',
         'Library',
         'IT Support',
         'Accessibility',
@@ -138,7 +132,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm">
             <div className="flex flex-wrap items-center space-x-6 mb-4 md:mb-0">
               <span className="text-university-grey">
-                © 2024 BIPS Technical College. All rights reserved.
+                © 2025 BIPS Technical College. All rights reserved.
               </span>
               <a href="#" className="text-university-grey hover:text-white transition-colors">
                 Privacy Policy

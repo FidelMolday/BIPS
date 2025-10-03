@@ -9,7 +9,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm Wes, your virtual assistant. How can I help you today?",
+      text: "Hi! I'm BIPS, your virtual assistant. How can I help you today?",
       isBot: true,
       timestamp: new Date()
     }
@@ -72,7 +72,7 @@ const ChatBot = () => {
                   <MessageCircle className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold">Chat with Wes</h3>
+                  <h3 className="font-semibold">Chat with BIPs</h3>
                   <p className="text-sm opacity-90">Online now</p>
                 </div>
               </div>

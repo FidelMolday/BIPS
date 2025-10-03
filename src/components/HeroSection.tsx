@@ -12,21 +12,21 @@ const HeroSection = () => {
       title: "Graduate Excellence Expo",
       subtitle: "Join us on 16 October to explore postgrad study, get career advice, and have real conversations that could shape your future.",
       ctaText: "Register Now",
-      ctaLink: "#"
+      ctaLink: "Admissions"
     },
     {
       image: heroImage,
       title: "Stay Near. Go Far.",
       subtitle: "Your future's closer than you think. Discover world-class education right in your backyard.",
       ctaText: "Learn More",
-      ctaLink: "#"
+      ctaLink: "Admissions"
     },
     {
       image: heroImage,
       title: "Free Online Study Sessions",
       subtitle: "Get exam-ready with 24 free online sessions led by expert teachers. Covering 15 subjects, plus a practice exam with expert feedback.",
       ctaText: "Find Out More",
-      ctaLink: "#"
+      ctaLink: "Contact"
     }
   ];
 
@@ -125,7 +125,7 @@ const HeroSection = () => {
         <div className="container mx-auto px-4 py-3">
           <p className="text-sm text-university-dark">
             <strong>BIPS Technical College Admissions:</strong> For more information about our admission requirements and application process, please visit our admissions page{' '}
-            <a href="#" className="text-primary hover:underline font-medium">here</a>.
+            <a href="Admissions" className="text-primary hover:underline font-medium">here</a>.
           </p>
         </div>
       </div>

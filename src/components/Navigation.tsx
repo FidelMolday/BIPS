@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Search, ChevronDown, Menu, X, Phone, FileText, GraduationCap, BookOpen, Users, MessageSquare, Calendar } from 'lucide-react';
+import { Search, Menu, X, Phone, FileText, GraduationCap, BookOpen, Users, MessageSquare, Calendar } from 'lucide-react';
 import { 
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import {
   CommandDialog,
@@ -23,49 +21,12 @@ const Navigation = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-    {
-      title: 'Courses',
-      items: [
-        'Certificate Courses',
-        'Diploma Programs',
-        'Higher Diploma',
-        'Short Courses',
-        'Online Courses',
-      ]
-    },
-    {
-      title: 'About us',
-      items: [
-        'Our Story',
-        'Vision & Mission',
-        'Leadership Team',
-        'Campus Facilities',
-      ]
-    },
-    {
-      title: 'Admission',
-      items: [
-        'Entry Requirements',
-        'Application Process',
-        'Fee Structure',
-      ]
-    },
-    {
-      title: 'Contact',
-      items: [
-        'Contact Information',
-        'Campus Locations',
-      ]
-    },
-    {
-      title: 'Intake',
-      items: [
-        'Current Intake',
-        'Important Dates',
-        'Registration',
-        'Orientation',
-      ]
-    },
+    { title: 'Home' },
+    { title: 'Courses' },
+    { title: 'About us' },
+    { title: 'Admission' },
+    { title: 'Contact' },
+    { title: 'Intake' },
   ];
 
   return (
@@ -74,10 +35,6 @@ const Navigation = () => {
       <div className="bg-university-dark text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-12">
-            <div className="flex items-center space-x-6 text-sm">
-              <button className="hover:text-university-grey transition-colors">STUDENTS</button>
-              <button className="hover:text-university-grey transition-colors">STAFF</button>
-            </div>
             <div className="flex items-center space-x-4">
               <Button size="sm" className="bg-accent-red hover:bg-accent-red-hover text-sm font-medium">
                 <Phone className="w-4 h-4 mr-2" />
@@ -109,28 +66,14 @@ const Navigation = () => {
             <div className="hidden lg:block">
               <NavigationMenu>
                 <NavigationMenuList className="space-x-1">
-                  <NavigationMenuItem>
-                    <NavigationMenuLink href="/" className="text-university-dark hover:text-primary font-medium px-4 py-2 inline-block">
-                      Home
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
                   {navItems.map((item) => (
                     <NavigationMenuItem key={item.title}>
-                      <NavigationMenuTrigger className="text-university-dark hover:text-primary font-medium">
+                      <NavigationMenuLink
+                        href={`/${item.title.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="text-university-dark hover:text-primary font-medium px-4 py-2 inline-block"
+                      >
                         {item.title}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="w-48 p-4 bg-white">
-                          {item.items.map((subItem) => (
-                            <NavigationMenuLink
-                              key={subItem}
-                              className="block px-3 py-2 text-sm text-university-dark hover:text-primary hover:bg-university-light-grey rounded-md transition-colors cursor-pointer"
-                            >
-                              {subItem}
-                            </NavigationMenuLink>
-                          ))}
-                        </div>
-                      </NavigationMenuContent>
+                      </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
                 </NavigationMenuList>
@@ -165,19 +108,12 @@ const Navigation = () => {
           <div className="lg:hidden bg-white border-t">
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navItems.map((item) => (
-                <div key={item.title} className="border-b border-gray-200 pb-2">
-                  <div className="font-medium text-university-dark mb-2">{item.title}</div>
-                  <div className="pl-4 space-y-1">
-                    {item.items.map((subItem) => (
-                      <button
-                        key={subItem}
-                        className="block w-full text-left text-sm text-university-grey hover:text-primary py-1"
-                      >
-                        {subItem}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                <button
+                  key={item.title}
+                  className="block w-full text-left font-medium text-university-dark py-2 border-b border-gray-200"
+                >
+                  {item.title}
+                </button>
               ))}
             </div>
           </div>
@@ -214,7 +150,7 @@ const Navigation = () => {
             </CommandItem>
             <CommandItem>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Higher Diploma</span>
+              <span>Artisan Courses</span>
             </CommandItem>
             <CommandItem>
               <GraduationCap className="mr-2 h-4 w-4" />
