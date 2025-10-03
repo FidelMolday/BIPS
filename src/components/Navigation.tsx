@@ -15,58 +15,60 @@ const Navigation = () => {
 
   const navItems = [
     {
-      title: 'Study with Us',
+      title: 'Home',
       items: [
-        'Undergraduate Degrees',
-        'Postgraduate Degrees',
-        'Research Degrees',
-        'International Students',
-        'Online Learning',
+        'Overview',
+        'News & Events',
+        'Announcements',
+        'Quick Links',
       ]
     },
     {
-      title: 'Research',
+      title: 'Courses',
       items: [
-        'Research Areas',
-        'Research Institutes',
-        'Research Students',
-        'Industry Partnerships',
+        'Certificate Courses',
+        'Diploma Programs',
+        'Higher Diploma',
+        'Short Courses',
+        'Online Courses',
       ]
     },
     {
-      title: 'About BIPS',
+      title: 'About us',
       items: [
         'Our Story',
-        'Leadership',
+        'Vision & Mission',
+        'Leadership Team',
+        'Campus Facilities',
+        'Accreditation',
+      ]
+    },
+    {
+      title: 'Admission',
+      items: [
+        'Entry Requirements',
+        'Application Process',
+        'Fee Structure',
+        'Scholarships',
+        'Transfer Students',
+      ]
+    },
+    {
+      title: 'Contact',
+      items: [
+        'Contact Information',
         'Campus Locations',
-        'Rankings & Recognition',
+        'Enquiries',
+        'Visit Us',
       ]
     },
     {
-      title: 'Community',
+      title: 'Intake',
       items: [
-        'Student Life',
-        'Alumni',
-        'Industry Partners',
-        'Community Engagement',
-      ]
-    },
-    {
-      title: 'Alumni',
-      items: [
-        'Alumni Community',
-        'Events & Networking',
-        'Career Services',
-        'Give Back',
-      ]
-    },
-    {
-      title: 'Indigenous',
-      items: [
-        'Indigenous Programs',
-        'Cultural Support',
-        'Community Partnerships',
-        'Research',
+        'Current Intake',
+        'Important Dates',
+        'Registration',
+        'Orientation',
       ]
     },
   ];
