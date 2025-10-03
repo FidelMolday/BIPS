@@ -25,46 +25,22 @@ const Navigation = () => {
   const navItems = [
     {
       title: 'Courses',
-      items: [
-        'Certificate Courses',
-        'Diploma Programs',
-        'Higher Diploma',
-        'Short Courses',
-        'Online Courses',
-      ]
     },
     {
       title: 'About us',
-      items: [
-        'Our Story',
-        'Vision & Mission',
-        'Leadership Team',
-        'Campus Facilities',
-      ]
+     
     },
     {
       title: 'Admission',
-      items: [
-        'Entry Requirements',
-        'Application Process',
-        'Fee Structure',
-      ]
+      
     },
     {
       title: 'Contact',
-      items: [
-        'Contact Information',
-        'Campus Locations',
-      ]
+     
     },
     {
       title: 'Intake',
-      items: [
-        'Current Intake',
-        'Important Dates',
-        'Registration',
-        'Orientation',
-      ]
+     
     },
   ];
 
@@ -74,10 +50,6 @@ const Navigation = () => {
       <div className="bg-university-dark text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-12">
-            <div className="flex items-center space-x-6 text-sm">
-              <button className="hover:text-university-grey transition-colors">STUDENTS</button>
-              <button className="hover:text-university-grey transition-colors">STAFF</button>
-            </div>
             <div className="flex items-center space-x-4">
               <Button size="sm" className="bg-accent-red hover:bg-accent-red-hover text-sm font-medium">
                 <Phone className="w-4 h-4 mr-2" />
@@ -214,7 +186,7 @@ const Navigation = () => {
             </CommandItem>
             <CommandItem>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Higher Diploma</span>
+              <span>Artisan Courses</span>
             </CommandItem>
             <CommandItem>
               <GraduationCap className="mr-2 h-4 w-4" />
