@@ -5,6 +5,7 @@ import ContentCards from '@/components/ContentCards';
 import InfoSection from '@/components/InfoSection';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
+import ScrollToTop from '@/components/ScrollToTop';
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <InfoSection />
       <Footer />
       <ChatBot />
+      <ScrollToTop />
     </div>
   );
 };

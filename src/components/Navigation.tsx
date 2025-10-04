@@ -21,12 +21,12 @@ const Navigation = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-    { title: 'Home' },
-    { title: 'Courses' },
-    { title: 'About us' },
-    { title: 'Admission' },
-    { title: 'Contact' },
-    { title: 'Intake' },
+    { title: 'Home', href: '/' },
+    { title: 'Courses', href: '/courses' },
+    { title: 'About us', href: '/about-us' },
+    { title: 'Admission', href: '/admissions' },
+    { title: 'Contact', href: '/contact' },
+    { title: 'Intake', href: '/intake' },
   ];
 
   return (
@@ -69,7 +69,7 @@ const Navigation = () => {
                   {navItems.map((item) => (
                     <NavigationMenuItem key={item.title}>
                       <NavigationMenuLink
-                        href={`/${item.title.toLowerCase().replace(/\s+/g, '-')}`}
+                        href={item.href}
                         className="text-university-dark hover:text-primary font-medium px-4 py-2 inline-block"
                       >
                         {item.title}
@@ -108,12 +108,13 @@ const Navigation = () => {
           <div className="lg:hidden bg-white border-t">
             <div className="container mx-auto px-4 py-4 space-y-4">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.title}
+                  href={item.href}
                   className="block w-full text-left font-medium text-university-dark py-2 border-b border-gray-200"
                 >
                   {item.title}
-                </button>
+                </a>
               ))}
             </div>
           </div>
