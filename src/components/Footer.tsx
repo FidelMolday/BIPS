@@ -51,7 +51,7 @@ const Footer = () => {
           
           {/* University Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center mb-6">
+            <a href="/" className="flex items-center mb-6 hover:opacity-80 transition-opacity">
               <div className="w-10 h-10 bg-primary rounded-sm mr-3 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">B</span>
               </div>
@@ -59,7 +59,7 @@ const Footer = () => {
                 <div className="font-bold text-lg">BIPS TECHNICAL</div>
                 <div className="text-sm text-university-grey">COLLEGE</div>
               </div>
-            </div>
+            </a>
             
             <p className="text-university-grey mb-6 leading-relaxed">
               BIPS Technical College is a leading institution committed to providing 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Wifi, BookOpen, FlaskConical, Laptop, Utensils, Dumbbell, Home, Library, Users } from 'lucide-react';
@@ -143,6 +144,7 @@ const CampusLife = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
       <ChatBot />
     </div>
   );

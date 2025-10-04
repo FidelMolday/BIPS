@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 import ChatBot from '@/components/ChatBot';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Quote, GraduationCap, Briefcase, Award, TrendingUp } from 'lucide-react';
@@ -166,6 +167,7 @@ const Testimonials = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
       <ChatBot />
     </div>
   );
