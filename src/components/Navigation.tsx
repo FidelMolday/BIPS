@@ -21,34 +21,12 @@ const Navigation = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-<<<<<<< HEAD
     { title: 'Home' },
     { title: 'Courses' },
     { title: 'About us' },
     { title: 'Admission' },
     { title: 'Contact' },
     { title: 'Intake' },
-=======
-    {
-      title: 'Courses',
-    },
-    {
-      title: 'About us',
-     
-    },
-    {
-      title: 'Admission',
-      
-    },
-    {
-      title: 'Contact',
-     
-    },
-    {
-      title: 'Intake',
-     
-    },
->>>>>>> 9c27c37cdf9cf4e7aba409eea210ae20f7aac1bf
   ];
 
   return (
