@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -114,6 +115,7 @@ const Contact = () => {
       </main>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
