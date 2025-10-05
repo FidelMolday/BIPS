@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import heroImage from '@/assets/hero-students.jpg';
+import heroImage from '@/assets/hero-graduation.jpg';
+import heroImage2 from '@/assets/students-photo.jpg';
+import heroImage3 from '@/assets/workshop-photo.jpg';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,23 +11,23 @@ const HeroSection = () => {
   const slides = [
     {
       image: heroImage,
-      title: "Graduate Excellence Expo",
-      subtitle: "Join us on 16 October to explore postgrad study, get career advice, and have real conversations that could shape your future.",
-      ctaText: "Register Now",
+      title: "Are you ready to learn new SKILLS?",
+      subtitle: "Join FOR A VARIETY OF COURSE",
+      ctaText: "Sign up now",
       ctaLink: "Admissions"
     },
     {
-      image: heroImage,
-      title: "Stay Near. Go Far.",
-      subtitle: "Your future's closer than you think. Discover world-class education right in your backyard.",
+      image: heroImage2,
+      title: "Blessing Institute of Professional Studies",
+      subtitle: "Empowering students with practical skills and technical knowledge for successful careers.",
       ctaText: "Learn More",
       ctaLink: "Admissions"
     },
     {
-      image: heroImage,
-      title: "Free Online Study Sessions",
-      subtitle: "Get exam-ready with 24 free online sessions led by expert teachers. Covering 15 subjects, plus a practice exam with expert feedback.",
-      ctaText: "Find Out More",
+      image: heroImage3,
+      title: "Intake in Progress",
+      subtitle: "Join thousands of successful students and start your journey to a brighter future.",
+      ctaText: "Enroll Now",
       ctaLink: "Contact"
     }
   ];

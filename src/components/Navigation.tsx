@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, Menu, X, Phone, FileText, GraduationCap, BookOpen, Users, MessageSquare, Calendar } from 'lucide-react';
+import logo from '@/assets/bips-logo.png';
 import { 
   NavigationMenu,
   NavigationMenuItem,
@@ -51,15 +52,9 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-primary rounded-sm mr-3 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">B</span>
-                </div>
-                <div className="text-university-dark">
-                  <div className="font-bold text-lg">BIPS TECHNICAL</div>
-                  <div className="text-sm text-university-grey">COLLEGE</div>
-                </div>
-              </div>
+              <a href="/" className="flex items-center">
+                <img src={logo} alt="BIPS Technical College" className="h-14 w-auto" />
+              </a>
             </div>
 
             {/* Desktop Navigation */}
