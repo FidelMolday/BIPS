@@ -21,6 +21,13 @@ const AboutUs = () => {
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
     },
     {
+      name: "ASHA MOHAMED",
+      position: "COLLEGE SECRETARY",
+      description: "Manages administrative operations and ensures efficient coordination across all college departments.",
+      email: "secretary@bipstc.ac.ke",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop"
+    },
+    {
       name: "MUKUHI KARIMI",
       position: "DIRECTOR",
       description: "Brings extensive expertise in strategic direction and ensuring the college meets its mission and goals.",
@@ -102,7 +109,7 @@ const AboutUs = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
               {leaders.map((leader, index) => (
                 <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="aspect-square overflow-hidden">

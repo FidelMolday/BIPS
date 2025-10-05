@@ -3,22 +3,34 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import { Card, CardContent } from '@/components/ui/card';
+import hospitalityImg from '@/assets/course-hospitality.jpg';
+import cosmetologyImg from '@/assets/course-cosmetology.jpg';
+import fashionImg from '@/assets/course-fashion.jpg';
+import electricalImg from '@/assets/course-electrical.jpg';
+import plumbingImg from '@/assets/course-plumbing.jpg';
+import weldingImg from '@/assets/course-welding.jpg';
+import drivingImg from '@/assets/course-driving.jpg';
+import computerImg from '@/assets/course-computer.jpg';
+import mechanicImg from '@/assets/course-mechanic.jpg';
+import nursingImg from '@/assets/course-nursing.jpg';
+import languageImg from '@/assets/course-language.jpg';
+import houseManagerImg from '@/assets/course-house-manager.jpg';
 
 const Courses = () => {
   // 12 course placeholders (3 rows of 4)
   const courses = [
-    { id: 1, title: 'Hospitality Management (Catering)', status: 'INTAKE ONGOING' },
-    { id: 2, title: 'Cosmetology (Hair & Beauty)', status: 'INTAKE ONGOING' },
-    { id: 3, title: 'Fashion Design (Dress Making)', status: 'INTAKE ONGOING' },
-    { id: 4, title: 'Electrical Installation', status: 'INTAKE ONGOING' },
-    { id: 5, title: 'Plumbing', status: 'INTAKE ONGOING' },
-    { id: 6, title: 'Welding', status: 'INTAKE ONGOING' },
-    { id: 7, title: 'Driving', status: 'INTAKE ONGOING' },
-    { id: 8, title: 'Computer Packages', status: 'INTAKE ONGOING' },
-    { id: 9, title: 'Motor Vehicle Mechanic', status: 'INTAKE ONGOING' },
-    { id: 10, title: 'Certified Nursing Assistant', status: 'INTAKE ONGOING' },
-    { id: 11, title: 'Foreign Language', status: 'INTAKE ONGOING' },
-    { id: 12, title: 'Assistant House Manager', status: 'INTAKE ONGOING' },
+    { id: 1, title: 'Hospitality Management (Catering)', status: 'INTAKE ONGOING', image: hospitalityImg },
+    { id: 2, title: 'Cosmetology (Hair & Beauty)', status: 'INTAKE ONGOING', image: cosmetologyImg },
+    { id: 3, title: 'Fashion Design (Dress Making)', status: 'INTAKE ONGOING', image: fashionImg },
+    { id: 4, title: 'Electrical Installation', status: 'INTAKE ONGOING', image: electricalImg },
+    { id: 5, title: 'Plumbing', status: 'INTAKE ONGOING', image: plumbingImg },
+    { id: 6, title: 'Welding', status: 'INTAKE ONGOING', image: weldingImg },
+    { id: 7, title: 'Driving', status: 'INTAKE ONGOING', image: drivingImg },
+    { id: 8, title: 'Computer Packages', status: 'INTAKE ONGOING', image: computerImg },
+    { id: 9, title: 'Motor Vehicle Mechanic', status: 'INTAKE ONGOING', image: mechanicImg },
+    { id: 10, title: 'Certified Nursing Assistant', status: 'INTAKE ONGOING', image: nursingImg },
+    { id: 11, title: 'Foreign Language', status: 'INTAKE ONGOING', image: languageImg },
+    { id: 12, title: 'Assistant House Manager', status: 'INTAKE ONGOING', image: houseManagerImg },
   ];
 
   return (
@@ -40,9 +52,12 @@ const Courses = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {courses.map((course) => (
                 <Card key={course.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-                  {/* Placeholder for image - user will add their own */}
-                  <div className="bg-muted h-48 flex items-center justify-center border-b">
-                    <p className="text-muted-foreground text-sm">Add Your Image Here</p>
+                  <div className="h-48 overflow-hidden border-b">
+                    <img 
+                      src={course.image} 
+                      alt={course.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   
                   <CardContent className="p-6">
