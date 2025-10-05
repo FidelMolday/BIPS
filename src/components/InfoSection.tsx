@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Award, Users, TrendingUp } from 'lucide-react';
-import campusImage from '@/assets/campus-life.jpg';
-import researchImage from '@/assets/research.jpg';
-import graduationImage from '@/assets/graduation.jpg';
+import campusImage from '@/assets/campus-photo.jpg';
+import researchImage from '@/assets/students-learning.jpg';
+import graduationImage from '@/assets/hero-graduation.jpg';
 
 const InfoSection = () => {
   return (

@@ -7,25 +7,25 @@ import { Mail, Linkedin } from 'lucide-react';
 const AboutUs = () => {
   const leaders = [
     {
-      name: "Dr. James Mwangi",
-      position: "Principal",
-      description: "With over 20 years of experience in technical education, Dr. Mwangi leads BIPS Technical College with a vision of excellence and innovation.",
+      name: "STEVE KAMWANZA",
+      position: "PRINCIPAL",
+      description: "Leading BIPS Technical College with a vision of excellence and innovation in technical education.",
       email: "principal@bipstc.ac.ke",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop"
     },
     {
-      name: "Prof. Sarah Wanjiru",
-      position: "Deputy Principal - Academics",
-      description: "Prof. Wanjiru oversees all academic programs ensuring quality education and industry-relevant curriculum for our students.",
-      email: "deputy.academics@bipstc.ac.ke",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+      name: "KEVIN MBUGUA",
+      position: "OPERATIONS MANAGER",
+      description: "Oversees all operations ensuring quality education and smooth functioning across all departments.",
+      email: "operations@bipstc.ac.ke",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
     },
     {
-      name: "Mr. David Ochieng",
-      position: "Deputy Principal - Administration",
-      description: "Mr. Ochieng brings extensive administrative expertise, ensuring smooth operations and student support services across all campuses.",
-      email: "deputy.admin@bipstc.ac.ke",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+      name: "MUKUHI KARIMI",
+      position: "DIRECTOR",
+      description: "Brings extensive expertise in strategic direction and ensuring the college meets its mission and goals.",
+      email: "director@bipstc.ac.ke",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
     }
   ];
 
@@ -50,44 +50,40 @@ const AboutUs = () => {
               
               <div className="prose prose-lg max-w-none space-y-6">
                 <p className="text-lg leading-relaxed text-muted-foreground">
-                  BIPS Technical College is a premier institution of technical and vocational education in Kenya, 
-                  established with a mission to provide quality, industry-relevant training that empowers students 
-                  with practical skills and knowledge for successful careers.
+                  Blessing institute of professional studies (BIPS) is a registered institution under the Ministry of Higher Education, Technical Vocational and Education Training Chapter (TVET), business registration Act of the companies & Societies.
                 </p>
                 
                 <p className="text-lg leading-relaxed text-muted-foreground">
-                  Since our founding, we have been committed to excellence in technical education, offering a wide 
-                  range of programs including diploma courses, certificate programs, and artisan training. Our 
-                  state-of-the-art facilities and experienced faculty ensure that students receive hands-on training 
-                  that meets international standards.
+                  The college was started back in 2014 in Kangemi, Nairobi, with 6 students inside a salon. We have had over 1000 students since we opened and we have produced great professionals who are working in and out of the country. At BIPS, we equip our students with a great understanding on how to handle clients, workmates, service delivery in their work places and above all handling themselves decently.
                 </p>
                 
                 <p className="text-lg leading-relaxed text-muted-foreground">
-                  We pride ourselves on our strong partnerships with industry leaders, which provide our students 
-                  with internship opportunities and ensure our curriculum remains aligned with current market needs. 
-                  Our graduates are highly sought after by employers across Kenya and beyond, testament to the 
-                  quality of education we provide.
+                  We have enjoyed great growth both physically and academically thus we have expanded our classes. We have another branch in Kawangware along Naivasha road on cooperative bank building and still looking forward for the establishment of other branches in Kenya.
+                </p>
+
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  The college is fully equipped with modern facilities that make it easy for our instructors to give the best to the students. We are one of the best leading colleges in Nairobi County as far as technical aspect is concerned.
                 </p>
 
                 <div className="grid md:grid-cols-3 gap-6 mt-12">
                   <Card>
                     <CardContent className="p-6 text-center">
-                      <h3 className="text-4xl font-bold text-primary mb-2">5000+</h3>
-                      <p className="text-muted-foreground">Students Enrolled</p>
+                      <h3 className="text-4xl font-bold text-primary mb-2">1000+</h3>
+                      <p className="text-muted-foreground">Students Trained</p>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardContent className="p-6 text-center">
-                      <h3 className="text-4xl font-bold text-primary mb-2">50+</h3>
-                      <p className="text-muted-foreground">Industry Partners</p>
+                      <h3 className="text-4xl font-bold text-primary mb-2">2014</h3>
+                      <p className="text-muted-foreground">Year Established</p>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardContent className="p-6 text-center">
-                      <h3 className="text-4xl font-bold text-primary mb-2">95%</h3>
-                      <p className="text-muted-foreground">Employment Rate</p>
+                      <h3 className="text-4xl font-bold text-primary mb-2">2</h3>
+                      <p className="text-muted-foreground">Branches</p>
                     </CardContent>
                   </Card>
                 </div>
