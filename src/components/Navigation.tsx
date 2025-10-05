@@ -22,13 +22,21 @@ const Navigation = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const navItems = [
-    { title: 'Home', href: '/' },
-    { title: 'Courses', href: '/courses' },
-    { title: 'About us', href: '/about-us' },
-    { title: 'Admission', href: '/admissions' },
-    { title: 'Contact', href: '/contact' },
-    { title: 'Intake', href: '/intake' },
+    { title: 'Home', href: '/', keywords: ['home', 'main', 'index'] },
+    { title: 'Courses', href: '/courses', keywords: ['courses', 'programs', 'training', 'hospitality', 'cosmetology', 'fashion', 'electrical', 'plumbing', 'welding', 'driving', 'computer', 'mechanic', 'nursing', 'language'] },
+    { title: 'About us', href: '/about-us', keywords: ['about', 'leadership', 'management', 'principal', 'director', 'history', 'story'] },
+    { title: 'Admission', href: '/admissions', keywords: ['admission', 'apply', 'enrollment', 'registration', 'join'] },
+    { title: 'Contact', href: '/contact', keywords: ['contact', 'email', 'phone', 'address', 'location'] },
+    { title: 'Intake', href: '/intake', keywords: ['intake', 'enrollment', 'application', 'deadline', 'dates'] },
   ];
+
+  const handleSearch = (value: string) => {
+    const searchTerm = value.toLowerCase();
+    return navItems.filter(item => 
+      item.title.toLowerCase().includes(searchTerm) ||
+      item.keywords.some(keyword => keyword.includes(searchTerm))
+    );
+  };
 
   return (
     <header className="w-full">
@@ -122,53 +130,73 @@ const Navigation = () => {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Pages">
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/'; setIsSearchOpen(false); }}>
               <FileText className="mr-2 h-4 w-4" />
               <span>Home</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
               <BookOpen className="mr-2 h-4 w-4" />
-              <span>Campus Life</span>
+              <span>Courses</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/about-us'; setIsSearchOpen(false); }}>
               <Users className="mr-2 h-4 w-4" />
-              <span>Testimonials</span>
+              <span>About Us</span>
+            </CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/admissions'; setIsSearchOpen(false); }}>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Admissions</span>
+            </CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/contact'; setIsSearchOpen(false); }}>
+              <MessageSquare className="mr-2 h-4 w-4" />
+              <span>Contact</span>
+            </CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/intake'; setIsSearchOpen(false); }}>
+              <Calendar className="mr-2 h-4 w-4" />
+              <span>Intake</span>
             </CommandItem>
           </CommandGroup>
           <CommandGroup heading="Courses">
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Certificate Courses</span>
+              <span>Hospitality Management (Catering)</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Diploma Programs</span>
+              <span>Cosmetology (Hair & Beauty)</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Artisan Courses</span>
+              <span>Fashion Design (Dress Making)</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Short Courses</span>
+              <span>Electrical Installation</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
               <GraduationCap className="mr-2 h-4 w-4" />
-              <span>Online Courses</span>
+              <span>Motor Vehicle Mechanic</span>
+            </CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Certified Nursing Assistant</span>
+            </CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/courses'; setIsSearchOpen(false); }}>
+              <GraduationCap className="mr-2 h-4 w-4" />
+              <span>Computer Packages</span>
             </CommandItem>
           </CommandGroup>
-          <CommandGroup heading="Information">
-            <CommandItem>
-              <MessageSquare className="mr-2 h-4 w-4" />
-              <span>Contact Information</span>
+          <CommandGroup heading="Quick Links">
+            <CommandItem onSelect={() => { window.location.href = '/contact'; setIsSearchOpen(false); }}>
+              <Phone className="mr-2 h-4 w-4" />
+              <span>Contact: 0707 717 780 / 0704 094 393</span>
             </CommandItem>
-            <CommandItem>
+            <CommandItem onSelect={() => { window.location.href = '/intake'; setIsSearchOpen(false); }}>
               <Calendar className="mr-2 h-4 w-4" />
-              <span>Current Intake</span>
+              <span>Current Intake Information</span>
             </CommandItem>
-            <CommandItem>
-              <FileText className="mr-2 h-4 w-4" />
-              <span>Application Process</span>
+            <CommandItem onSelect={() => { window.location.href = '/about-us'; setIsSearchOpen(false); }}>
+              <Users className="mr-2 h-4 w-4" />
+              <span>Leadership Team</span>
             </CommandItem>
           </CommandGroup>
         </CommandList>
