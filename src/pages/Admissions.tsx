@@ -32,6 +32,28 @@ const Admissions = () => {
                       <Download className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-grow">
+                      <h3 className="font-bold text-lg mb-2">Application Letter Template</h3>
+                      <p className="text-muted-foreground text-sm mb-4">
+                        Download the application letter template to start your admission process.
+                      </p>
+                      <a href="/documents/application-form.pdf" download>
+                        <Button variant="outline" className="w-full">
+                          <Download className="w-4 h-4 mr-2" />
+                          Download Application Letter
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Download className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-grow">
                       <h3 className="font-bold text-lg mb-2">Admission Letter Template</h3>
                       <p className="text-muted-foreground text-sm mb-4">
                         Download the admission letter template to complete your application process.
