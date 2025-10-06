@@ -36,10 +36,12 @@ const Admissions = () => {
                       <p className="text-muted-foreground text-sm mb-4">
                         Download the admission letter template to complete your application process.
                       </p>
-                      <Button variant="outline" className="w-full">
-                        <Download className="w-4 h-4 mr-2" />
-                        Download Admission Letter
-                      </Button>
+                      <a href="/documents/admission-letter-template.pdf" download>
+                        <Button variant="outline" className="w-full">
+                          <Download className="w-4 h-4 mr-2" />
+                          Download Admission Letter
+                        </Button>
+                      </a>
                     </div>
                   </div>
                 </CardContent>
@@ -80,38 +82,35 @@ const Admissions = () => {
                 <CardContent className="p-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                      <h3 className="font-bold text-lg mb-4">Bank Details</h3>
+                      <h3 className="font-bold text-lg mb-4">Equity Bank</h3>
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Bank Name</p>
-                        <p className="font-semibold">Kenya Commercial Bank (KCB)</p>
+                        <p className="font-semibold">Equity Bank</p>
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Account Name</p>
-                        <p className="font-semibold">BIPS Technical College</p>
+                        <p className="font-semibold">Blessing Institute of Professional Studies</p>
                       </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Account Number</p>
-                        <p className="font-semibold">1234567890</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-1">Branch</p>
-                        <p className="font-semibold">Nairobi Branch</p>
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                        <p className="text-sm text-blue-800">
+                          <strong>Note:</strong> Contact the college for account number details.
+                        </p>
                       </div>
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="font-bold text-lg mb-4">M-PESA Paybill</h3>
+                      <h3 className="font-bold text-lg mb-4">Co-operative Bank</h3>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Paybill Number</p>
-                        <p className="font-semibold text-2xl text-primary">522522</p>
+                        <p className="text-sm text-muted-foreground mb-1">Bank Name</p>
+                        <p className="font-semibold">Co-operative Bank</p>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Account Number</p>
-                        <p className="font-semibold">Your Admission Number</p>
+                        <p className="text-sm text-muted-foreground mb-1">Account Name</p>
+                        <p className="font-semibold">Blessing Institute of Professional Studies</p>
                       </div>
                       <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mt-4">
                         <p className="text-sm text-amber-800">
-                          <strong>Note:</strong> Please use your admission number as the account number when making M-PESA payments.
+                          <strong>Note:</strong> Contact the college for account number details.
                         </p>
                       </div>
                     </div>
