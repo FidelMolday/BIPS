@@ -31,8 +31,8 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-semibold mb-2">Phone</h3>
-                  <p className="text-muted-foreground">+254 700 000 000</p>
-                  <p className="text-muted-foreground">+254 720 000 000</p>
+                  <p className="text-muted-foreground">+254 704 094 393</p>
+                  <p className="text-muted-foreground">+254 705 631 531</p>
                 </CardContent>
               </Card>
 
@@ -42,8 +42,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-muted-foreground">info@bipstc.ac.ke</p>
-                  <p className="text-muted-foreground">admissions@bipstc.ac.ke</p>
+                  <p className="text-muted-foreground">blessinginstitute84@gmail.com</p>
                 </CardContent>
               </Card>
 
@@ -53,8 +52,9 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-semibold mb-2">Location</h3>
-                  <p className="text-muted-foreground">Nairobi Campus</p>
+                  <p className="text-muted-foreground">P.O. Box 340 Kangemi</p>
                   <p className="text-muted-foreground">Nairobi, Kenya</p>
+                  <p className="text-muted-foreground text-sm mt-1">Kawangware Branch: Along Naivasha Road, Co-operative Bank Building</p>
                 </CardContent>
               </Card>
 

@@ -70,15 +70,15 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">Kiambu Road, Nairobi, Kenya</span>
+                <span className="text-university-grey">P.O. Box 340 Kangemi, Nairobi, Kenya</span>
               </div>
               <div className="flex items-center">
                 <Phone className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">+254 700 123 456</span>
+                <span className="text-university-grey">+254 704 094 393 / +254 705 631 531</span>
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">info@bips.ac.ke</span>
+                <span className="text-university-grey">blessinginstitute84@gmail.com</span>
               </div>
             </div>
             

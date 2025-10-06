@@ -106,14 +106,18 @@ const Intake = () => {
                 </ol>
                 
                 <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <Button size="lg" className="flex items-center gap-2">
-                    <FileText className="w-5 h-5" />
-                    Download Application Form
-                  </Button>
-                  <Button variant="outline" size="lg" className="flex items-center gap-2">
-                    <Phone className="w-5 h-5" />
-                    Contact Admissions
-                  </Button>
+                  <a href="/documents/application-form.pdf" download>
+                    <Button size="lg" className="flex items-center gap-2">
+                      <FileText className="w-5 h-5" />
+                      Download Application Form
+                    </Button>
+                  </a>
+                  <a href="/contact">
+                    <Button variant="outline" size="lg" className="flex items-center gap-2">
+                      <Phone className="w-5 h-5" />
+                      Contact Admissions
+                    </Button>
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -123,8 +127,8 @@ const Intake = () => {
               <h3 className="text-2xl font-bold mb-4">Need Help?</h3>
               <p className="text-lg mb-4">Contact our admissions team for assistance</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <p className="text-lg font-semibold">📞 0707 717 780 / 0704 094 393</p>
-                <p className="text-lg font-semibold">✉️ admissions@institution.ac.ke</p>
+                <p className="text-lg font-semibold">📞 +254 704 094 393 / +254 705 631 531</p>
+                <p className="text-lg font-semibold">✉️ blessinginstitute84@gmail.com</p>
               </div>
             </div>
           </div>
