@@ -3,6 +3,10 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Linkedin } from 'lucide-react';
+import steveImg from '@/assets/leader-steve.jpg';
+import kevinImg from '@/assets/leader-kevin.jpg';
+import ashaImg from '@/assets/leader-asha.jpg';
+import mukuhiImg from '@/assets/leader-mukuhi.jpg';
 
 const AboutUs = () => {
   const leaders = [
@@ -11,28 +15,28 @@ const AboutUs = () => {
       position: "PRINCIPAL",
       description: "Leading BIPS Technical College with a vision of excellence and innovation in technical education.",
       email: "principal@bipstc.ac.ke",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop"
+      image: steveImg
     },
     {
       name: "KEVIN MBUGUA",
       position: "OPERATIONS MANAGER",
       description: "Oversees all operations ensuring quality education and smooth functioning across all departments.",
       email: "operations@bipstc.ac.ke",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+      image: kevinImg
     },
     {
       name: "ASHA MOHAMED",
       position: "COLLEGE SECRETARY",
       description: "Manages administrative operations and ensures efficient coordination across all college departments.",
       email: "secretary@bipstc.ac.ke",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop"
+      image: ashaImg
     },
     {
       name: "MUKUHI KARIMI",
       position: "DIRECTOR",
       description: "Brings extensive expertise in strategic direction and ensuring the college meets its mission and goals.",
       email: "director@bipstc.ac.ke",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop"
+      image: mukuhiImg
     }
   ];
 
