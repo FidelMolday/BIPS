@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, Menu, X, Phone, FileText, GraduationCap, BookOpen, Users, MessageSquare, Calendar } from 'lucide-react';
 import logo from '@/assets/bips-logo.png';
+import { Link } from 'react-router-dom';
 import { 
   NavigationMenu,
   NavigationMenuItem,
@@ -45,10 +46,12 @@ const Navigation = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-12">
             <div className="flex items-center space-x-4">
-              <Button size="sm" className="bg-accent-red hover:bg-accent-red-hover text-sm font-medium">
-                <Phone className="w-4 h-4 mr-2" />
-                CONTACT US
-              </Button>
+              <Link to="/contact">
+                <Button size="sm" className="bg-accent-red hover:bg-accent-red-hover text-sm font-medium">
+                  <Phone className="w-4 h-4 mr-2" />
+                  CONTACT US
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

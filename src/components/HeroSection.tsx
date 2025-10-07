@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-graduation.jpg';
 import heroImage2 from '@/assets/students-photo.jpg';
 import heroImage3 from '@/assets/workshop-photo.jpg';
@@ -14,21 +15,21 @@ const HeroSection = () => {
       title: "Are you ready to learn new SKILLS?",
       subtitle: "Join FOR A VARIETY OF COURSE",
       ctaText: "Sign up now",
-      ctaLink: "Admissions"
+      ctaLink: "/admissions"
     },
     {
       image: heroImage2,
       title: "Blessing Institute of Professional Studies",
       subtitle: "Empowering students with practical skills and technical knowledge for successful careers.",
       ctaText: "Learn More",
-      ctaLink: "Admissions"
+      ctaLink: "/about-us"
     },
     {
       image: heroImage3,
       title: "Intake in Progress",
       subtitle: "Join thousands of successful students and start your journey to a brighter future.",
       ctaText: "Enroll Now",
-      ctaLink: "Contact"
+      ctaLink: "/intake"
     }
   ];
 
@@ -78,13 +79,15 @@ const HeroSection = () => {
                   <p className="text-xl mb-8 leading-relaxed opacity-95">
                     {slide.subtitle}
                   </p>
-                  <Button 
-                    variant="cta" 
-                    size="lg"
-                    className="text-lg px-8 py-3 h-auto"
-                  >
-                    {slide.ctaText}
-                  </Button>
+                  <Link to={slide.ctaLink}>
+                    <Button 
+                      variant="cta" 
+                      size="lg"
+                      className="text-lg px-8 py-3 h-auto"
+                    >
+                      {slide.ctaText}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -127,7 +130,7 @@ const HeroSection = () => {
         <div className="container mx-auto px-4 py-3">
           <p className="text-sm text-university-dark">
             <strong>BIPS Technical College Admissions:</strong> For more information about our admission requirements and application process, please visit our admissions page{' '}
-            <a href="Admissions" className="text-primary hover:underline font-medium">here</a>.
+            <Link to="/admissions" className="text-primary hover:underline font-medium">here</Link>.
           </p>
         </div>
       </div>

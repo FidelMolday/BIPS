@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, GraduationCap, BookOpen, FileText, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ContentCards = () => {
   const cards = [
@@ -8,28 +9,28 @@ const ContentCards = () => {
       title: 'Diploma Courses',
       description: 'Explore our comprehensive range of undergraduate programs designed to kickstart your career journey.',
       icon: GraduationCap,
-      link: '#',
+      link: '/courses',
       color: 'bg-primary'
     },
     {
       title: 'Certificate Courses',
       description: 'Advance your career with our specialized postgraduate programs and research opportunities.',
       icon: BookOpen,
-      link: '#',
+      link: '/courses',
       color: 'bg-primary'
     },
     {
       title: 'Artisan Courses',
       description: 'Discover the various pathways to join our university community and start your educational journey.',
       icon: FileText,
-      link: '#',
+      link: '/courses',
       color: 'bg-primary'
     },
     {
       title: 'Online courses',
       description: 'Learn about our support services and programs specifically designed for international students.',
       icon: Globe,
-      link: '#',
+      link: '/courses',
       color: 'bg-primary'
     }
   ];
@@ -60,14 +61,16 @@ const ContentCards = () => {
                 </p>
                 
                 {/* Learn More Button */}
-                <Button
-                  variant="outline-white"
-                  size="sm"
-                  className="w-full group-hover:bg-white group-hover:text-primary transition-all duration-300"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </Button>
+                <Link to={card.link}>
+                  <Button
+                    variant="outline-white"
+                    size="sm"
+                    className="w-full group-hover:bg-white group-hover:text-primary transition-all duration-300"
+                  >
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}

@@ -3,10 +3,19 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { MessageCircle, X, Send } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
+
+interface Message {
+  id: number;
+  text: string;
+  isBot: boolean;
+  timestamp: Date;
+}
 
 const ChatBot = () => {
+  const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       text: "Hi! I'm BIPS, your virtual assistant. How can I help you today?",
@@ -15,11 +24,49 @@ const ChatBot = () => {
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSendMessage = () => {
-    if (!inputMessage.trim()) return;
+  const streamChat = async (userMessages: Array<{ role: string; content: string }>) => {
+    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+    
+    const resp = await fetch(CHAT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+      },
+      body: JSON.stringify({ messages: userMessages }),
+    });
 
-    const userMessage = {
+    if (resp.status === 429) {
+      toast({
+        title: "Rate limit exceeded",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+      return null;
+    }
+
+    if (resp.status === 402) {
+      toast({
+        title: "Service unavailable",
+        description: "Please contact support.",
+        variant: "destructive",
+      });
+      return null;
+    }
+
+    if (!resp.ok || !resp.body) {
+      throw new Error("Failed to start stream");
+    }
+
+    return resp.body.getReader();
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isLoading) return;
+
+    const userMessage: Message = {
       id: Date.now(),
       text: inputMessage,
       isBot: false,
@@ -28,17 +75,105 @@ const ChatBot = () => {
 
     setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
+    setIsLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse = {
-        id: Date.now() + 1,
-        text: "Thank you for your message! I'm currently being set up with our knowledge base. Soon I'll be able to help you with information about BIPS Technical College programs, admissions, campus life, and more.",
-        isBot: true,
-        timestamp: new Date()
+    const userMessages = messages
+      .filter(m => !m.isBot || m.id === 1)
+      .map(m => ({ role: m.isBot ? "assistant" : "user", content: m.text }));
+    userMessages.push({ role: "user", content: userMessage.text });
+
+    try {
+      const reader = await streamChat(userMessages);
+      if (!reader) {
+        setIsLoading(false);
+        return;
+      }
+
+      const decoder = new TextDecoder();
+      let textBuffer = "";
+      let streamDone = false;
+      let assistantText = "";
+      let assistantMessageId = Date.now() + 1;
+
+      const updateAssistantMessage = (content: string) => {
+        setMessages(prev => {
+          const lastMsg = prev[prev.length - 1];
+          if (lastMsg?.isBot && lastMsg.id === assistantMessageId) {
+            return prev.map(m => 
+              m.id === assistantMessageId ? { ...m, text: content } : m
+            );
+          }
+          return [...prev, {
+            id: assistantMessageId,
+            text: content,
+            isBot: true,
+            timestamp: new Date()
+          }];
+        });
       };
-      setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+
+      while (!streamDone) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        textBuffer += decoder.decode(value, { stream: true });
+
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
+          let line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
+
+          if (line.endsWith("\r")) line = line.slice(0, -1);
+          if (line.startsWith(":") || line.trim() === "") continue;
+          if (!line.startsWith("data: ")) continue;
+
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === "[DONE]") {
+            streamDone = true;
+            break;
+          }
+
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const content = parsed.choices?.[0]?.delta?.content;
+            if (content) {
+              assistantText += content;
+              updateAssistantMessage(assistantText);
+            }
+          } catch {
+            textBuffer = line + "\n" + textBuffer;
+            break;
+          }
+        }
+      }
+
+      if (textBuffer.trim()) {
+        for (let raw of textBuffer.split("\n")) {
+          if (!raw) continue;
+          if (raw.endsWith("\r")) raw = raw.slice(0, -1);
+          if (raw.startsWith(":") || raw.trim() === "") continue;
+          if (!raw.startsWith("data: ")) continue;
+          const jsonStr = raw.slice(6).trim();
+          if (jsonStr === "[DONE]") continue;
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const content = parsed.choices?.[0]?.delta?.content;
+            if (content) {
+              assistantText += content;
+              updateAssistantMessage(assistantText);
+            }
+          } catch { /* ignore */ }
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to get response. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
