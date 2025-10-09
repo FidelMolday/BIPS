@@ -13,16 +13,6 @@ const Footer = () => {
       ]
     },
     {
-      title: 'Research',
-      links: [
-        'Research Areas',
-        'Research Institutes',
-        'Research Students',
-        'Industry Partnerships',
-        'Research Support'
-      ]
-    },
-    {
       title: 'About',
       links: [
         'Our Story',
