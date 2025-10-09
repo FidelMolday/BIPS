@@ -3,10 +3,6 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Linkedin } from 'lucide-react';
-import steveImg from '@/assets/leader-steve.jpg';
-import kevinImg from '@/assets/leader-kevin.jpg';
-import ashaImg from '@/assets/leader-asha.jpg';
-import mukuhiImg from '@/assets/leader-mukuhi.jpg';
 
 const AboutUs = () => {
   const leaders = [
@@ -14,29 +10,25 @@ const AboutUs = () => {
       name: "STEVE KAMWANZA",
       position: "PRINCIPAL",
       description: "Leading BIPS Technical College with a vision of excellence and innovation in technical education.",
-      email: "principal@bipstc.ac.ke",
-      image: steveImg
+      email: "principal@bipstc.ac.ke"
     },
     {
       name: "KEVIN MBUGUA",
       position: "OPERATIONS MANAGER",
       description: "Oversees all operations ensuring quality education and smooth functioning across all departments.",
-      email: "operations@bipstc.ac.ke",
-      image: kevinImg
+      email: "operations@bipstc.ac.ke"
     },
     {
       name: "ASHA MOHAMED",
       position: "COLLEGE SECRETARY",
       description: "Manages administrative operations and ensures efficient coordination across all college departments.",
-      email: "secretary@bipstc.ac.ke",
-      image: ashaImg
+      email: "secretary@bipstc.ac.ke"
     },
     {
       name: "MUKUHI KARIMI",
       position: "DIRECTOR",
       description: "Brings extensive expertise in strategic direction and ensuring the college meets its mission and goals.",
-      email: "director@bipstc.ac.ke",
-      image: mukuhiImg
+      email: "director@bipstc.ac.ke"
     }
   ];
 
@@ -115,14 +107,7 @@ const AboutUs = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
               {leaders.map((leader, index) => (
-                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="aspect-square overflow-hidden">
-                    <img 
-                      src={leader.image} 
-                      alt={leader.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-bold mb-1">{leader.name}</h3>
                     <p className="text-primary font-semibold mb-4">{leader.position}</p>
