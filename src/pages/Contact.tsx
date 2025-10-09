@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -6,8 +7,74 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -75,37 +142,67 @@ const Contact = () => {
               <Card>
                 <CardContent className="p-8">
                   <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-                  <form className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium mb-2">Full Name</label>
-                        <Input placeholder="Enter your name" />
+                        <label className="block text-sm font-medium mb-2">Full Name *</label>
+                        <Input 
+                          name="name"
+                          placeholder="Enter your name" 
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                        />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium mb-2">Email Address</label>
-                        <Input type="email" placeholder="Enter your email" />
+                        <label className="block text-sm font-medium mb-2">Email Address *</label>
+                        <Input 
+                          type="email" 
+                          name="email"
+                          placeholder="Enter your email" 
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                        />
                       </div>
                     </div>
                     
                     <div>
                       <label className="block text-sm font-medium mb-2">Phone Number</label>
-                      <Input type="tel" placeholder="Enter your phone number" />
+                      <Input 
+                        type="tel" 
+                        name="phone"
+                        placeholder="Enter your phone number" 
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium mb-2">Subject</label>
-                      <Input placeholder="What is this regarding?" />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Message</label>
-                      <Textarea 
-                        placeholder="Type your message here..." 
-                        className="min-h-[150px]"
+                      <Input 
+                        name="subject"
+                        placeholder="What is this regarding?" 
+                        value={formData.subject}
+                        onChange={handleChange}
                       />
                     </div>
 
-                    <Button className="w-full">Send Message</Button>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Message *</label>
+                      <Textarea 
+                        name="message"
+                        placeholder="Type your message here..." 
+                        className="min-h-[150px]"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </Button>
                   </form>
                 </CardContent>
               </Card>
