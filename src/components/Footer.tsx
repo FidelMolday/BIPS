@@ -1,5 +1,6 @@
 import React from 'react';
 import { Twitter, Instagram, Linkedin, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import bipsLogo from '@/assets/bips-logo.png';
 
 const Footer = () => {
   const footerSections = [
@@ -42,8 +43,8 @@ const Footer = () => {
           {/* University Info */}
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center mb-6 hover:opacity-80 transition-opacity">
-              <div className="w-10 h-10 bg-primary rounded-sm mr-3 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">B</span>
+              <div className="w-10 h-10 mr-3 flex items-center justify-center">
+                <img src={bipsLogo} alt="BIPS Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <div className="font-bold text-lg">BIPS TECHNICAL</div>
