@@ -105,7 +105,7 @@ const Footer = () => {
                   <Linkedin className="w-4 h-4" />
                 </a>
                 <a 
-                  href="https://www.tiktok.com/@bipstechnicalcollege" 
+                  href="https://www.tiktok.com/@bips_technicalofficial?_r=1&_t=ZS-91IczHUzNuE" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 bg-university-grey bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
@@ -116,7 +116,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a 
-                  href="https://twitter.com/bipstechnical" 
+                  href="https://x.com/search?q=BIPS%20Technical&t=rsbNzR-D9OwA5czlR86SsA&s=09" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 bg-university-grey bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
