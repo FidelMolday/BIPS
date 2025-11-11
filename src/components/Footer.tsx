@@ -168,10 +168,8 @@ const Footer = () => {
               </a>
             </div>
             
-            <div className="flex items-center space-x-4 text-university-grey">
-              <span>CRICOS Provider: 00917K</span>
-              <span>|</span>
-              <span>TEQSA: PRV12186</span>
+            <div className="flex items-center text-university-grey">
+              <span>Made by FIDLAQUE Solutions</span>
             </div>
           </div>
         </div>
