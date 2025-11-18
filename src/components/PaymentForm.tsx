@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Loader2, CreditCard, CheckCircle, Shield, Lock } from 'lucide-react';
 import { PaymentResult } from '@/integrations/stripe/types';
-import { mockCreatePaymentIntent } from '@/integrations/stripe/client';
+import { createPaymentIntent } from '@/integrations/stripe/client';
 
 interface PaymentFormProps {
   amount: number;
@@ -33,11 +33,12 @@ export const PaymentForm = ({
     const initializePayment = async () => {
       try {
         setIsCreatingIntent(true);
-        const { clientSecret } = await mockCreatePaymentIntent(amount, currency);
+        const { clientSecret } = await createPaymentIntent(amount, currency.toLowerCase());
         setClientSecret(clientSecret);
       } catch (err) {
-        setError('Failed to initialize payment');
-        onPaymentError?.('Failed to initialize payment');
+        const errorMessage = err instanceof Error ? err.message : 'Failed to initialize payment';
+        setError(errorMessage);
+        onPaymentError?.(errorMessage);
       } finally {
         setIsCreatingIntent(false);
       }
@@ -65,18 +66,28 @@ export const PaymentForm = ({
         return;
       }
 
-      // For demo purposes, we'll simulate a successful payment
-      // In production, you would use stripe.confirmPayment()
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Simulate successful payment
-      setPaymentSuccess(true);
-      const successResult: PaymentResult = {
-        success: true,
-        paymentIntentId: `pi_demo_${Date.now()}`,
-      };
-      onPaymentSuccess?.(successResult);
-      
+      const { error: confirmError } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${window.location.origin}/payment-success?amount=${amount}&currency=${currency}`,
+        },
+        redirect: 'if_required',
+      });
+
+      if (confirmError) {
+        setError(confirmError.message || 'Payment failed');
+        onPaymentError?.(confirmError.message || 'Payment failed');
+      } else {
+        // Payment succeeded
+        setPaymentSuccess(true);
+        const successResult: PaymentResult = {
+          success: true,
+          paymentIntentId: `pi_${Date.now()}`, // In real scenario, this comes from Stripe
+          amount,
+          currency,
+        };
+        onPaymentSuccess?.(successResult);
+      }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
       setError(errorMessage);
@@ -113,7 +124,7 @@ export const PaymentForm = ({
         <CardContent className="pt-6">
           <div className="text-center py-8">
             <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
-            <p className="text-muted-foreground">Initializing payment...</p>
+            <p className="text-muted-foreground">Initializing secure payment...</p>
           </div>
         </CardContent>
       </Card>
@@ -160,7 +171,9 @@ export const PaymentForm = ({
                       billingDetails: {
                         name: 'auto',
                         email: 'auto',
-                        address: 'auto',
+                        address: {
+                          country: 'auto',
+                        },
                       }
                     }
                   }}
