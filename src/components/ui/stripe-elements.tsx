@@ -1,6 +1,9 @@
 import { Elements } from '@stripe/react-stripe-js';
-import { getStripe } from '@/integrations/stripe/client';
+import { loadStripe } from '@stripe/stripe-js';
 import { ReactNode } from 'react';
+
+// Use your actual publishable key
+const stripePromise = loadStripe('pk_test_51SUuhcK2mbZGHZrKEZMX2cmHYKHCDS1NRuA7hS5xcLpjOfsrFYv01aIcWaqMuL7whZFYpJsgk7sB9n0Zb2UsNLd40082NqLupW');
 
 interface StripeElementsProps {
   children: ReactNode;
@@ -8,49 +11,21 @@ interface StripeElementsProps {
 }
 
 export const StripeElements = ({ children, clientSecret }: StripeElementsProps) => {
-  const stripePromise = getStripe();
-
-  const options = {
+  const options = clientSecret ? {
     clientSecret,
     appearance: {
-      theme: 'flat' as const,
+      theme: 'stripe' as const,
       variables: {
-        colorPrimary: '#2563eb',
+        colorPrimary: '#0066cc',
         colorBackground: '#ffffff',
-        colorText: '#1f2937',
-        colorDanger: '#dc2626',
+        colorText: '#30313d',
+        colorDanger: '#df1b41',
         fontFamily: 'Inter, system-ui, sans-serif',
         spacingUnit: '4px',
         borderRadius: '8px',
-        fontSizeBase: '16px',
-      },
-      rules: {
-        '.Input': {
-          border: '1px solid #d1d5db',
-          borderRadius: '8px',
-          padding: '12px',
-          fontSize: '16px',
-        },
-        '.Input:focus': {
-          borderColor: '#2563eb',
-          boxShadow: '0 0 0 1px #2563eb',
-        },
-        '.Label': {
-          fontWeight: '500',
-          marginBottom: '8px',
-          color: '#374151',
-        },
-        '.Tab': {
-          border: '1px solid #d1d5db',
-          borderRadius: '8px',
-        },
-        '.Tab--selected': {
-          borderColor: '#2563eb',
-          backgroundColor: '#f8fafc',
-        },
       },
     },
-  };
+  } : undefined;
 
   return (
     <Elements stripe={stripePromise} options={options}>

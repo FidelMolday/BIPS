@@ -1,9 +1,11 @@
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Loader2, CreditCard, CheckCircle, Shield, Lock, AlertCircle } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Loader2, CreditCard, CheckCircle, Shield, Lock, AlertCircle, Edit, Plus } from 'lucide-react';
 
 interface PaymentFormProps {
   amount: number;
@@ -13,106 +15,57 @@ interface PaymentFormProps {
   description?: string;
   onPaymentSuccess?: (result: any) => void;
   onPaymentError?: (error: string) => void;
+  onAmountChange?: (newAmount: number) => void;
 }
 
-// Backend API base URL
-const API_BASE_URL = 'https://stripe-test-yb9k.onrender.com/api';
-
 export const PaymentForm = ({ 
-  amount, 
+  amount: initialAmount, 
   currency = 'KES', 
-  customerEmail = 'student@bips.com', // Default values
+  customerEmail = 'student@bips.com',
   customerName = 'BIPS Student',
   description = 'Course Registration Fee',
   onPaymentSuccess,
-  onPaymentError 
+  onPaymentError,
+  onAmountChange
 }: PaymentFormProps) => {
   const stripe = useStripe();
   const elements = useElements();
   
   const [isLoading, setIsLoading] = useState(false);
-  const [isCreatingIntent, setIsCreatingIntent] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [amount, setAmount] = useState<number>(initialAmount);
+  const [showCustomAmount, setShowCustomAmount] = useState(false);
+  const [customAmount, setCustomAmount] = useState<string>('');
 
-  // Create payment intent using your backend
-  const createPaymentIntent = async (amount: number, currency: string) => {
-    try {
-      console.log('Creating payment intent for amount:', amount);
-      
-      const response = await fetch(`${API_BASE_URL}/payments/create-intent`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount,
-          currency: currency.toLowerCase(),
-          customerEmail,
-          customerName,
-          description,
-          metadata: {
-            source: 'bips-website',
-            course: description
-          }
-        }),
-      });
+  const predefinedAmounts = [
+    { value: 5000, label: 'KES 5,000', description: 'Application Fee' },
+    { value: 10000, label: 'KES 10,000', description: 'Deposit' },
+    { value: 25000, label: 'KES 25,000', description: '1st Semester' },
+    { value: 50000, label: 'KES 50,000', description: 'Full Year' }
+  ];
 
-      console.log('Response status:', response.status);
-      
-      if (!response.ok) {
-        let errorMessage = `Server error: ${response.status}`;
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.error || errorData.details || errorMessage;
-        } catch (e) {
-          // If response is not JSON, use status text
-          errorMessage = response.statusText || errorMessage;
-        }
-        throw new Error(errorMessage);
-      }
-
-      const data = await response.json();
-      console.log('Payment intent created successfully:', data.paymentIntentId);
-      return data;
-    } catch (error) {
-      console.error('Payment intent creation error:', error);
-      // More specific error messages
-      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-        throw new Error('Cannot connect to payment server. Please check your internet connection and try again.');
-      }
-      throw error;
+  const handleCustomAmountSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const parsedAmount = parseFloat(customAmount);
+    if (parsedAmount > 0) {
+      setAmount(parsedAmount);
+      setShowCustomAmount(false);
+      setCustomAmount('');
+      onAmountChange?.(parsedAmount);
+      setError(null);
+    } else {
+      setError('Please enter a valid amount greater than 0');
     }
   };
 
-  useEffect(() => {
-    const initializePayment = async () => {
-      try {
-        setIsCreatingIntent(true);
-        setError(null);
-        
-        const result = await createPaymentIntent(amount, currency);
-        setClientSecret(result.clientSecret);
-        
-      } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Failed to initialize payment';
-        console.error('Initialization error:', errorMessage);
-        setError(errorMessage);
-        onPaymentError?.(errorMessage);
-      } finally {
-        setIsCreatingIntent(false);
-      }
-    };
-
-    // Only initialize if we have an amount
-    if (amount > 0) {
-      initializePayment();
-    } else {
-      setError('Please select a valid payment amount');
-      setIsCreatingIntent(false);
-    }
-  }, [amount, currency, customerEmail, customerName, description, onPaymentError]);
+  const handleAmountChange = (newAmount: number) => {
+    setAmount(newAmount);
+    setShowCustomAmount(false);
+    setCustomAmount('');
+    onAmountChange?.(newAmount);
+    setError(null);
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -173,6 +126,21 @@ export const PaymentForm = ({
     }
   };
 
+  // Show loading state while Stripe is initializing
+  if (!stripe) {
+    return (
+      <Card className="w-full max-w-md mx-auto">
+        <CardContent className="pt-6">
+          <div className="text-center py-8">
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
+            <p className="text-muted-foreground">Loading payment system...</p>
+            <p className="text-xs text-muted-foreground mt-2">Please wait while we initialize secure payment</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   if (paymentSuccess) {
     return (
       <Card className="w-full max-w-md mx-auto border-green-200">
@@ -188,20 +156,6 @@ export const PaymentForm = ({
                 Your payment has been processed successfully. You will receive a confirmation email shortly.
               </p>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  if (isCreatingIntent) {
-    return (
-      <Card className="w-full max-w-md mx-auto">
-        <CardContent className="pt-6">
-          <div className="text-center py-8">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
-            <p className="text-muted-foreground">Initializing secure payment...</p>
-            <p className="text-xs text-muted-foreground mt-2">Connecting to payment gateway</p>
           </div>
         </CardContent>
       </Card>
@@ -228,14 +182,91 @@ export const PaymentForm = ({
       </CardHeader>
       
       <CardContent className="space-y-6">
-        {/* Amount Display */}
-        <div className="text-center p-4 bg-gray-50 rounded-lg">
-          <p className="text-sm text-muted-foreground">Total Amount</p>
-          <p className="text-2xl font-bold text-gray-900">
+        {/* Amount Selection */}
+        <div className="space-y-4">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold mb-3">Select Payment Amount</h3>
+            <p className="text-sm text-muted-foreground">
+              Choose the amount you'd like to pay towards your admission
+            </p>
+          </div>
+          
+          {/* Predefined Amounts */}
+          <div className="grid grid-cols-2 gap-3">
+            {predefinedAmounts.map((item) => (
+              <Button 
+                key={item.value}
+                type="button"
+                variant={amount === item.value ? "default" : "outline"}
+                onClick={() => handleAmountChange(item.value)}
+                className="h-16 flex flex-col"
+              >
+                <div className="font-semibold text-sm">{item.label}</div>
+                <div className="text-xs text-muted-foreground mt-1">{item.description}</div>
+              </Button>
+            ))}
+          </div>
+
+          {/* Custom Amount Section */}
+          <div className="border-t pt-4">
+            {!showCustomAmount ? (
+              <Button 
+                variant="outline" 
+                onClick={() => setShowCustomAmount(true)}
+                className="w-full"
+              >
+                <Plus className="w-4 h-4 mr-2" />
+                Enter Custom Amount
+              </Button>
+            ) : (
+              <form onSubmit={handleCustomAmountSubmit} className="space-y-3 p-4 bg-gray-50 rounded-lg">
+                <div className="space-y-2">
+                  <Label htmlFor="customAmount" className="text-sm font-medium">
+                    Enter Custom Amount ({currency})
+                  </Label>
+                  <Input
+                    id="customAmount"
+                    type="number"
+                    value={customAmount}
+                    onChange={(e) => setCustomAmount(e.target.value)}
+                    placeholder="Enter amount"
+                    min="1"
+                    step="1"
+                    className="text-center text-lg font-semibold"
+                    autoFocus
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Enter any amount you'd like to pay
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <Button type="submit" className="flex-1">
+                    Set Custom Amount
+                  </Button>
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    onClick={() => {
+                      setShowCustomAmount(false);
+                      setCustomAmount('');
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+
+        {/* Selected Amount Display */}
+        <div className="text-center p-4 bg-primary/5 border border-primary/10 rounded-lg">
+          <p className="text-sm text-muted-foreground">Total Amount to Pay</p>
+          <p className="text-2xl font-bold text-primary">
             {currency} {amount.toLocaleString()}
           </p>
           <p className="text-xs text-muted-foreground mt-1">
-            For: {customerName}
+            For: {customerName} • {description}
           </p>
         </div>
 
@@ -249,25 +280,18 @@ export const PaymentForm = ({
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Payment Element */}
           <div className="space-y-4">
-            <div className="border rounded-lg p-4 bg-white">
-              {clientSecret ? (
-                <PaymentElement 
-                  options={{
-                    layout: 'tabs',
-                    fields: {
-                      billingDetails: {
-                        name: 'never',
-                        email: 'never',
-                      }
+            <div className="border rounded-lg p-4 bg-white min-h-[200px]">
+              <PaymentElement 
+                options={{
+                  layout: 'tabs',
+                  fields: {
+                    billingDetails: {
+                      name: 'never',
+                      email: 'never',
                     }
-                  }}
-                />
-              ) : (
-                <div className="text-center py-4">
-                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">Loading payment form...</p>
-                </div>
-              )}
+                  }
+                }}
+              />
             </div>
           </div>
 
@@ -289,7 +313,7 @@ export const PaymentForm = ({
           {/* Submit Button */}
           <Button 
             type="submit" 
-            disabled={!stripe || isLoading || !clientSecret} 
+            disabled={!stripe || isLoading || amount <= 0} 
             className="w-full h-12 text-lg font-semibold"
             size="lg"
           >

@@ -1,7 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
-import { Download, CreditCard, Banknote } from 'lucide-react';
+import { Download, CreditCard, Banknote, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -13,6 +13,7 @@ const Admissions = () => {
   const [activeTab, setActiveTab] = useState("documents");
   const [paymentAmount, setPaymentAmount] = useState<number>(0);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   const handlePaymentSuccess = (result: any) => {
     console.log('Payment successful:', result);
@@ -29,12 +30,48 @@ const Admissions = () => {
     setShowPaymentForm(false); // Reset to show amount selection first
   };
 
+  // Create payment intent by calling backend API and return client secret
+  const createPaymentIntent = async (paymentAmount: number) => {
+    try {
+      const response = await fetch('/api/payments/create-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: paymentAmount,
+          currency: 'kes',
+          customerEmail: 'student@bips.com',
+          customerName: 'BIPS Student',
+          description: 'Course Registration Fee',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create payment intent');
+      }
+
+      const data = await response.json();
+      return data.clientSecret;
+    } catch (error) {
+      console.error('Error creating payment intent:', error);
+      throw error;
+    }
+  };
+
   const handleAmountSelect = (amount: number) => {
     setPaymentAmount(amount);
   };
 
-  const handleProceedToPayment = () => {
-    setShowPaymentForm(true);
+  const handleProceedToPayment = async () => {
+    try {
+      const secret = await createPaymentIntent(paymentAmount);
+      setClientSecret(secret);
+      setShowPaymentForm(true);
+    } catch (error) {
+      console.error('Failed to initialize payment:', error);
+      // Optionally show an error to the user here
+    }
   };
 
   const handleBackToAmountSelection = () => {
@@ -290,21 +327,33 @@ const Admissions = () => {
                         </>
                       ) : (
                         <div className="space-y-4">
-                          <Button 
-                            variant="outline" 
-                            onClick={handleBackToAmountSelection}
-                            className="mb-4"
-                          >
-                            ← Back to Amount Selection
-                          </Button>
-                          <StripeElements>
-                            <PaymentForm
-                              amount={paymentAmount}
-                              currency="KES"
-                              onPaymentSuccess={handlePaymentSuccess}
-                              onPaymentError={handlePaymentError}
-                            />
-                          </StripeElements>
+                            <Button
+                              variant="outline"
+                              onClick={handleBackToAmountSelection}
+                              className="mb-4"
+                            >
+                              ← Back to Amount Selection
+                            </Button>
+                            {clientSecret ? (
+                              <StripeElements clientSecret={clientSecret}>
+                                <PaymentForm
+                                  amount={paymentAmount}
+                                  currency="KES"
+                                  onPaymentSuccess={handlePaymentSuccess}
+                                  onPaymentError={handlePaymentError}
+                                  onClientSecret={setClientSecret}
+                                />
+                              </StripeElements>
+                            ) : (
+                              <Card>
+                                <CardContent className="pt-6">
+                                  <div className="text-center py-8">
+                                    <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
+                                    <p className="text-muted-foreground">Initializing payment...</p>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            )}
                         </div>
                       )}
                     </CardContent>
