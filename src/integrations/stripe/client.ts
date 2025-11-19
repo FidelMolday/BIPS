@@ -1,8 +1,5 @@
 import { loadStripe, Stripe } from '@stripe/stripe-js';
- pundit
 import { supabase } from '@/integrations/supabase/client';
-
- main
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -13,15 +10,14 @@ export const getStripe = () => {
   return stripePromise;
 };
 
- pundit
 export const createPaymentIntent = async (amount: number, currency: string = 'kes', metadata?: any) => {
   try {
     const { data, error } = await supabase.functions.invoke('create-payment-intent', {
       body: {
         amount,
         currency,
-        metadata
-      }
+        metadata,
+      },
     });
 
     if (error) {
@@ -29,9 +25,9 @@ export const createPaymentIntent = async (amount: number, currency: string = 'ke
     }
 
     return data;
-  } catch (error) {
-    console.error('Error creating payment intent:', error);
-    throw error;
+  } catch (err) {
+    console.error('Error creating payment intent:', err);
+    throw err;
   }
 };
 
@@ -39,31 +35,20 @@ export const createPaymentIntent = async (amount: number, currency: string = 'ke
 export const formatAmount = (amount: number, currency: string = 'KES') => {
   return new Intl.NumberFormat('en-KE', {
     style: 'currency',
-    currency: currency,
+    currency,
     minimumFractionDigits: 0,
   }).format(amount);
-
-// Mock function for development - replace with actual API call
-export const createPaymentIntent = async (amount: number, currency: string = 'kes') => {
-  // For now, we'll return a mock client secret
-  // In production, this should call your backend API
-  return {
-    clientSecret: `pi_mock_${Date.now()}_secret_mock_${Math.random().toString(36).substr(2, 9)}`,
-    amount: Math.round(amount * 100),
-    currency: currency.toLowerCase(),
-  };
 };
 
-// Mock function to simulate backend API call
+// Mock function to simulate backend API call (useful in development/testing)
 export const mockCreatePaymentIntent = async (amount: number, currency: string = 'kes') => {
   // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
   return {
     clientSecret: `pi_mock_${Date.now()}_secret_mock_${Math.random().toString(36).substr(2, 9)}`,
     amount: Math.round(amount * 100),
     currency: currency.toLowerCase(),
     id: `pi_mock_${Date.now()}`,
   };
- main
 };
