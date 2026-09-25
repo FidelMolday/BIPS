@@ -11,6 +11,8 @@ import Admissions from "./pages/Admissions";
 import AboutUs from "./pages/AboutUs";
 import Courses from "./pages/Courses";
 import Intake from "./pages/Intake";
+import BookAppointment from '@/pages/BookAppointment';
+import PaymentSuccess from '@/pages/PaymentSuccess';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,9 @@ const App = () => (
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/intake" element={<Intake />} />
+          <Route path="/book-appointment" element={<BookAppointment />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/invoice-payment-success" element={<PaymentSuccess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
