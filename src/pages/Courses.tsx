@@ -13,92 +13,96 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import coursesCatalogue from '@/assets/pdf/BIPS-Courses-Catalogue.pdf';
+import classImg from '@/assets/Gallery/class.jpeg';
+import hairdressingImg from '@/assets/Gallery/hairdressing.jpeg';
+import generalImg from '@/assets/Gallery/WhatsApp Image 2026-09-25 at 21.55.22.jpeg';
 
 // 14 course categories, matching the "OUR COURSES" flyer.
-// Each has a header color + list of sub-skills, like the flyer cards.
+// Photo assigned per course; hairdressing gets its own shot, the rest
+// alternate between the classroom photo and the general gallery photo.
 const courses = [
   {
     id: 1,
     title: 'Hospitality & Catering',
-    color: 'bg-pink-600',
+    image: generalImg,
     items: ['Food & Beverage Service', 'Kitchen Operations', 'Housekeeping', 'Front Office'],
   },
   {
     id: 2,
     title: 'Hair & Beauty (Cosmetology)',
-    color: 'bg-sky-600',
+    image: hairdressingImg,
     items: ['Hairdressing', 'Beauty Therapy', 'Nail Technology', 'Salon Management'],
   },
   {
     id: 3,
     title: 'Fashion Design & Tailoring',
-    color: 'bg-emerald-700',
+    image: generalImg,
     items: ['Dressmaking', 'Pattern Making', 'Garment Construction', 'Fashion Entrepreneurship'],
   },
   {
     id: 4,
     title: 'I.C.T',
-    color: 'bg-amber-500',
+    image: classImg,
     items: ['Computer Packages (ICDL)', 'Basic & Advanced Computer Skills', 'Graphic Design', 'Web Design & Digital Skills'],
   },
   {
     id: 5,
     title: 'Motor Vehicle Mechanic',
-    color: 'bg-red-700',
+    image: generalImg,
     items: ['Vehicle Maintenance', 'Engine Repair', 'Auto Electrical Systems', 'Practical Hands-on Training'],
   },
   {
     id: 6,
     title: 'Plumbing & Pipe Fitting',
-    color: 'bg-purple-700',
+    image: generalImg,
     items: ['Plumbing Installation', 'Pipe Fitting', 'Water Systems Maintenance', 'Practical Training'],
   },
   {
     id: 7,
     title: 'Electrical Installation',
-    color: 'bg-blue-700',
+    image: generalImg,
     items: ['Building Wiring', 'Electrical Maintenance', 'Solar Installation', 'Practical Hands-on Training'],
   },
   {
     id: 8,
     title: 'Driving',
-    color: 'bg-orange-600',
+    image: generalImg,
     items: ['Defensive Driving', 'Road Safety & Traffic Rules', 'Practical & Theory Training', 'Licensing Support'],
   },
   {
     id: 9,
     title: 'Caregiver / HSS / CNA',
-    color: 'bg-pink-700',
+    image: classImg,
     items: ['Caregiving Skills', 'Home Support Services (HSS)', 'Certified Nursing Assistant (CNA)', 'Patient Care & First Aid'],
   },
   {
     id: 10,
     title: 'Barista',
-    color: 'bg-teal-600',
+    image: generalImg,
     items: ['Coffee Preparation', 'Latte Art', 'Customer Service', 'Café Management'],
   },
   {
     id: 11,
     title: 'Baking & Pastry',
-    color: 'bg-lime-700',
+    image: generalImg,
     items: ['Cake Making', 'Bread & Pastries', 'Dessert Preparation', 'Bakery Business Skills'],
   },
   {
     id: 12,
     title: 'Community Health',
-    color: 'bg-indigo-800',
+    image: classImg,
     items: ['Community Health Worker (CHW)', 'Public Health Basics', 'First Aid', 'Health Promotion & Disease Prevention'],
   },
   {
     id: 13,
     title: 'International Languages',
-    color: 'bg-red-600',
+    image: classImg,
     items: ['English', 'French', 'Arabic', 'Italian', 'Spanish', 'Russian', 'Chinese', 'German', 'Japanese', 'Korean'],
   },
   {
     id: 14,
     title: 'Pre-Departure Training (All Countries)',
-    color: 'bg-green-800',
+    image: classImg,
     items: ['Cultural Orientation', 'Basic Language Preparation', 'Travel & Airport Procedures', "Workers' Rights", 'Safety & Personal Security'],
   },
 ];
@@ -195,29 +199,38 @@ const Courses = () => {
           </div>
         </section>
 
-        {/* Courses Grid */}
+        {/* Courses Grid — photo cards, matching capdevinstitute.com/eb-courses/ */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {visibleCourses.map((course) => (
                 <Card
                   key={course.id}
-                  className="overflow-hidden hover:shadow-lg transition-shadow"
+                  className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
                 >
-                  <div
-                    className={`${course.color} text-white px-5 py-3 font-bold text-lg`}
-                  >
-                    {course.title}
+                  <div className="h-48 overflow-hidden border-b">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <CardContent className="p-5">
-                    <ul className="text-sm space-y-1.5 mb-4 list-disc list-inside">
-                      {course.items.map((item) => (
+
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-bold text-primary mb-2">
+                      {course.title.toUpperCase()}
+                    </h3>
+
+                    <ul className="text-xs text-muted-foreground space-y-1 mb-3 list-disc list-inside">
+                      {course.items.slice(0, 3).map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
-                    <div className="inline-block bg-accent text-accent-foreground px-3 py-1 rounded text-xs font-semibold mb-3">
+
+                    <div className="inline-block bg-accent text-accent-foreground px-3 py-1 rounded text-sm font-semibold mb-3">
                       INTAKE ONGOING
                     </div>
+
                     <p className="text-sm font-semibold">
                       📞 0707 717 780 / 0704 094 393
                     </p>
