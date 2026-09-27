@@ -34,8 +34,60 @@ const Footer = () => {
     }
   ];
 
+  const locations = [
+    {
+      name: 'Kangemi Branch',
+      address: 'Murada Road, Kangemi',
+      landmark: 'Near Lianas Hospital, Daras, and the Chief\u2019s Camp.',
+      phone: '0707 717 780',
+    },
+    {
+      name: 'Kawangware Branch',
+      address: 'Naivasha Road, 1st Floor, Cooperative Building',
+      landmark: 'Near the Kawangware Market.',
+      phone: '0704 094 393',
+    },
+    {
+      name: 'Kikuyu Branch',
+      address: 'Along the Southern Bypass',
+      landmark: 'Access from the Waiyaki Way\u2013Kikuyu side and the Wangige\u2013Kikuyu side.',
+      phone: '0790 222 885',
+    },
+  ];
+
   return (
     <footer className="bg-university-dark text-white">
+      {/* Our Locations */}
+      <div className="border-b border-university-grey border-opacity-20">
+        <div className="container mx-auto px-4 py-12">
+          <h3 className="font-bold text-xl mb-8 text-center">
+            BIPS Technical College — Our Locations
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {locations.map((location) => (
+              <div key={location.name}>
+                <h4 className="font-semibold text-base mb-2">{location.name}</h4>
+                <div className="flex items-start text-sm mb-2">
+                  <MapPin className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                  <span className="text-university-grey">{location.address}</span>
+                </div>
+                <p className="text-university-grey text-sm mb-2 ml-6">
+                  {location.landmark}
+                </p>
+                <a
+                  href={`tel:+254${location.phone.replace(/\s|^0/g, '')}`}
+                  className="flex items-center text-sm hover:text-primary transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                  <span className="text-university-grey">{location.phone}</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">

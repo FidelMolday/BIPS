@@ -127,7 +127,7 @@ const Intake = () => {
               <h3 className="text-2xl font-bold mb-4">Need Help?</h3>
               <p className="text-lg mb-4">Contact our admissions team for assistance</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <p className="text-lg font-semibold">📞 +254 704 094 393 / +254 705 631 531</p>
+                <p className="text-lg font-semibold">📞 0707 717 780 / 0704 094 393 / 0790 222 885</p>
                 <p className="text-lg font-semibold">✉️ blessinginstitute84@gmail.com</p>
               </div>
             </div>

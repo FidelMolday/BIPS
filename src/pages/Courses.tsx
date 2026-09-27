@@ -296,7 +296,7 @@ const Courses = () => {
                     </div>
 
                     <p className="text-sm font-semibold mb-3">
-                      📞 0707 717 780 / 0704 094 393
+                      📞 0707 717 780 / 0704 094 393 / 0790 222 885
                     </p>
 
                     {/* Social links — same accounts as the site footer */}
