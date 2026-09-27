@@ -113,7 +113,7 @@ const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="flex items-center">
                 <MapPin className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">P.O. Box 340 Kangemi, Nairobi, Kenya</span>
+                <span className="text-university-grey">P.O. Box 612–00625, Kangemi, Nairobi, Kenya</span>
               </div>
               <div className="flex items-center">
                 <Phone className="w-4 h-4 text-primary mr-3 flex-shrink-0" />

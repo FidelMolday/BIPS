@@ -116,7 +116,7 @@ const Navigation = () => {
               </NavigationMenu>
 
               {/* Apply Now — right after Intake, in accent-red */}
-              <Link to="/apply" className="ml-3">
+              <Link to="/admissions" className="ml-3">
                 <Button
                   size="sm"
                   className="bg-accent-red hover:bg-accent-red-hover text-white text-sm font-medium"
@@ -165,7 +165,7 @@ const Navigation = () => {
                 </Link>
               ))}
               <Link
-                to="/apply"
+                to="/admissions"
                 className="block w-full text-center bg-accent-red hover:bg-accent-red-hover text-white font-medium py-2 rounded"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
