@@ -10,20 +10,20 @@ const Intake = () => {
   const intakePeriods = [
     {
       title: 'January Intake',
-      startDate: 'January 15, 2025',
-      deadline: 'December 31, 2024',
+      startDate: 'January 15, 2027',
+      deadline: 'December 31, 2026',
       status: 'Open',
     },
     {
       title: 'May Intake',
-      startDate: 'May 12, 2025',
-      deadline: 'April 30, 2025',
+      startDate: 'May 12, 2027',
+      deadline: 'April 30, 2027',
       status: 'Coming Soon',
     },
     {
       title: 'September Intake',
-      startDate: 'September 8, 2025',
-      deadline: 'August 31, 2025',
+      startDate: 'September 8, 2027',
+      deadline: 'August 31, 2027',
       status: 'Coming Soon',
     },
   ];

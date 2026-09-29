@@ -37,7 +37,7 @@ const Footer = () => {
   const locations = [
     {
       name: 'Kangemi Branch',
-      address: 'Murada Road, Kangemi',
+      address: 'Maratha road, Kangemi',
       landmark: 'Near Lianas Hospital, Daras, and the Chief\u2019s Camp.',
       phone: '0707 717 780',
     },
@@ -117,7 +117,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Phone className="w-4 h-4 text-primary mr-3 flex-shrink-0" />
-                <span className="text-university-grey">+254 704 094 393 / +254 705 631 531</span>
+                <span className="text-university-grey">+254 704 094 393</span>
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 text-primary mr-3 flex-shrink-0" />

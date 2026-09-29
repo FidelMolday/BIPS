@@ -3,7 +3,8 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mail, Linkedin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Mail, Linkedin, Download } from 'lucide-react';
 
 // Gallery imports (Vite handles these as URLs)
 import gallery1 from '@/assets/Gallery/Screenshot_2026-09-24_14-23-47.png';
@@ -11,6 +12,9 @@ import gallery2 from '@/assets/Gallery/Screenshot_2026-09-24_14-24-12.png';
 import gallery3 from '@/assets/Gallery/Screenshot_2026-09-24_14-25-02.png';
 import gallery4 from '@/assets/Gallery/Screenshot_2026-09-24_14-25-33.png';
 import gallery5 from '@/assets/Gallery/Screenshot_2026-09-24_14-25-55.png';
+
+// Full institutional profile — downloadable from the "Our Story" section
+import institutionalProfile from '@/assets/pdf/BIPS-Institutional-Profile.pdf';
 
 const AboutUs = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -79,11 +83,11 @@ const AboutUs = () => {
                 </p>
 
                 <p className="text-lg leading-relaxed text-muted-foreground">
-                  The college was started back in 2014 in Kangemi, Nairobi, with 6 students inside a salon. We have had over 1000 students since we opened and we have produced great professionals who are working in and out of the country. At BIPS, we equip our students with a great understanding on how to handle clients, workmates, service delivery in their work places and above all handling themselves decently.
+                  The college was started back in 2014 in Kangemi, Nairobi, with 6 students inside a salon. We have had over 6,000 students since we opened and we have produced great professionals who are working in and out of the country. At BIPS, we equip our students with a great understanding on how to handle clients, workmates, service delivery in their work places and above all handling themselves decently.
                 </p>
 
                 <p className="text-lg leading-relaxed text-muted-foreground">
-                  We have enjoyed great growth both physically and academically thus we have expanded our classes. We have another branch in Kawangware along Naivasha road on cooperative bank building and still looking forward for the establishment of other branches in Kenya.
+                  We have enjoyed great growth both physically and academically thus we have expanded our classes. Today we operate three campuses — Kangemi, Kawangware (along Naivasha Road, Co-operative Bank building), and Kikuyu — and we are still looking forward to establishing other branches across Kenya.
                 </p>
 
                 <p className="text-lg leading-relaxed text-muted-foreground">
@@ -93,7 +97,7 @@ const AboutUs = () => {
                 <div className="grid md:grid-cols-3 gap-6 mt-12">
                   <Card>
                     <CardContent className="p-6 text-center">
-                      <h3 className="text-4xl font-bold text-primary mb-2">1000+</h3>
+                      <h3 className="text-4xl font-bold text-primary mb-2">6,000+</h3>
                       <p className="text-muted-foreground">Students Trained</p>
                     </CardContent>
                   </Card>
@@ -107,10 +111,23 @@ const AboutUs = () => {
 
                   <Card>
                     <CardContent className="p-6 text-center">
-                      <h3 className="text-4xl font-bold text-primary mb-2">2</h3>
+                      <h3 className="text-4xl font-bold text-primary mb-2">3</h3>
                       <p className="text-muted-foreground">Branches</p>
                     </CardContent>
                   </Card>
+                </div>
+
+                {/* Full Institutional Profile download */}
+                <div className="flex flex-col items-center gap-2 mt-10 text-center">
+                  <Button asChild size="lg" className="font-semibold">
+                    <a href={institutionalProfile} download="BIPS-Institutional-Profile.pdf">
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Full Institutional Profile (PDF)
+                    </a>
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Our complete institutional profile — history, vision, mission, programmes, campuses and more
+                  </p>
                 </div>
               </div>
             </div>

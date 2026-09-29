@@ -500,7 +500,7 @@ const Admissions = () => {
 
                         <div className="flex-grow">
                           <h3 className="font-bold text-lg mb-2">
-                            Fee Structure 2024/2025
+                            Fee Structure 2026/2027
                           </h3>
 
                           <p className="text-muted-foreground text-sm mb-4">
