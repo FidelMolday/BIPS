@@ -383,21 +383,21 @@ const Admissions = () => {
 
       <main className="flex-grow">
         {/* Hero */}
-        <section className="bg-primary text-white py-20">
+        <section className="bg-primary text-white py-12 sm:py-20">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               Admissions
             </h1>
 
-            <p className="text-xl text-white/90">
+            <p className="text-base sm:text-xl text-white/90">
               Start your journey with BIPS Technical College
             </p>
           </div>
         </section>
 
-        <section className="py-16">
+        <section className="py-10 sm:py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
               Admission Process
             </h2>
 
@@ -406,32 +406,44 @@ const Admissions = () => {
               onValueChange={setActiveTab}
               className="max-w-6xl mx-auto"
             >
-              <TabsList className="grid w-full grid-cols-3 mb-8">
-                <TabsTrigger value="documents">
-                  Required Documents
+              <TabsList className="grid w-full grid-cols-3 mb-8 h-auto gap-1">
+                <TabsTrigger
+                  value="documents"
+                  className="text-[11px] sm:text-sm leading-tight whitespace-normal px-1 py-2 sm:px-4"
+                >
+                  <span className="hidden sm:inline">Required Documents</span>
+                  <span className="sm:hidden">Documents</span>
                 </TabsTrigger>
 
-                <TabsTrigger value="payment">
-                  Individual Payment
+                <TabsTrigger
+                  value="payment"
+                  className="text-[11px] sm:text-sm leading-tight whitespace-normal px-1 py-2 sm:px-4"
+                >
+                  <span className="hidden sm:inline">Individual Payment</span>
+                  <span className="sm:hidden">Payment</span>
                 </TabsTrigger>
 
-                <TabsTrigger value="bulk-enrollment">
-                  Bulk Enrollment
+                <TabsTrigger
+                  value="bulk-enrollment"
+                  className="text-[11px] sm:text-sm leading-tight whitespace-normal px-1 py-2 sm:px-4"
+                >
+                  <span className="hidden sm:inline">Bulk Enrollment</span>
+                  <span className="sm:hidden">Bulk</span>
                 </TabsTrigger>
               </TabsList>
 
               {/* DOCUMENTS */}
               <TabsContent value="documents">
-                <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto mb-10 sm:mb-16">
                   <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Download className="w-6 h-6 text-primary" />
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex items-start space-x-3 sm:space-x-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Download className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </div>
 
-                        <div className="flex-grow">
-                          <h3 className="font-bold text-lg mb-2">
+                        <div className="flex-grow min-w-0">
+                          <h3 className="font-bold text-base sm:text-lg mb-2">
                             Application Letter Template
                           </h3>
 
@@ -458,14 +470,14 @@ const Admissions = () => {
                   </Card>
 
                   <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <FileText className="w-6 h-6 text-primary" />
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex items-start space-x-3 sm:space-x-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </div>
 
-                        <div className="flex-grow">
-                          <h3 className="font-bold text-lg mb-2">
+                        <div className="flex-grow min-w-0">
+                          <h3 className="font-bold text-base sm:text-lg mb-2">
                             Admission Letter Template
                           </h3>
 
@@ -492,14 +504,14 @@ const Admissions = () => {
                   </Card>
 
                   <Card className="hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Download className="w-6 h-6 text-primary" />
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="flex items-start space-x-3 sm:space-x-4">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Download className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </div>
 
-                        <div className="flex-grow">
-                          <h3 className="font-bold text-lg mb-2">
+                        <div className="flex-grow min-w-0">
+                          <h3 className="font-bold text-base sm:text-lg mb-2">
                             Fee Structure 2026/2027
                           </h3>
 
@@ -529,20 +541,20 @@ const Admissions = () => {
                 {/* PAYMENT OPTIONS */}
                 <div className="max-w-4xl mx-auto">
                   <Card className="border-2 border-primary/20">
-                    <CardHeader className="bg-primary/5">
+                    <CardHeader className="bg-primary/5 px-4 sm:px-6">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                          <CreditCard className="w-6 h-6 text-white" />
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                          <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </div>
 
-                        <CardTitle className="text-2xl">
+                        <CardTitle className="text-lg sm:text-2xl">
                           Fee Payment Options
                         </CardTitle>
                       </div>
                     </CardHeader>
 
-                    <CardContent className="p-8">
-                      <div className="grid md:grid-cols-2 gap-8 mb-8">
+                    <CardContent className="p-4 sm:p-8">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8">
                         <div className="space-y-4">
                           <h3 className="font-bold text-lg mb-4">
                             Bank Transfer
@@ -606,7 +618,7 @@ const Admissions = () => {
                         </div>
                       </div>
 
-                      <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="mt-8 p-4 sm:p-6 bg-blue-50 border border-blue-200 rounded-lg">
                         <h4 className="font-bold mb-3 text-blue-900">
                           Payment Instructions:
                         </h4>
@@ -639,10 +651,10 @@ const Admissions = () => {
                         <div className="mt-6 text-center">
                           <Button
                             onClick={handlePayOnlineClick}
-                            className="bg-green-600 hover:bg-green-700 text-lg px-8 py-3"
+                            className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-base sm:text-lg px-6 sm:px-8 py-3"
                             size="lg"
                           >
-                            <Banknote className="w-5 h-5 mr-2" />
+                            <Banknote className="w-5 h-5 mr-2 flex-shrink-0" />
                             Make Payment Online
                           </Button>
 
@@ -663,19 +675,19 @@ const Admissions = () => {
                   className="max-w-2xl mx-auto"
                 >
                   <Card>
-                    <CardHeader className="text-center">
-                      <CardTitle className="flex items-center justify-center gap-2 text-2xl">
-                        <CreditCard className="w-6 h-6" />
+                    <CardHeader className="text-center px-4 sm:px-6">
+                      <CardTitle className="flex items-center justify-center gap-2 text-xl sm:text-2xl">
+                        <CreditCard className="w-6 h-6 flex-shrink-0" />
                         Make Payment
                       </CardTitle>
 
-                      <p className="text-muted-foreground">
+                      <p className="text-sm sm:text-base text-muted-foreground">
                         Choose online payment or record bank transfer
                         details
                       </p>
                     </CardHeader>
 
-                    <CardContent className="p-6">
+                    <CardContent className="p-4 sm:p-6">
                       <PaystackPayment
                         amount={paymentAmount}
                         currency="KES"
@@ -690,12 +702,12 @@ const Admissions = () => {
                   </Card>
 
                   <Card className="mt-6">
-                    <CardContent className="p-6">
+                    <CardContent className="p-4 sm:p-6">
                       <h4 className="font-bold mb-3">
                         Need Help?
                       </h4>
 
-                      <div className="space-y-2 text-sm text-muted-foreground">
+                      <div className="space-y-2 text-sm text-muted-foreground break-words">
                         <p>
                           • For payment issues, contact:
                           finance@bips.com
@@ -707,7 +719,8 @@ const Admissions = () => {
                         </p>
 
                         <p>
-                          • College phone: +254 XXX XXX XXX
+                          • College phone: 0707 717 780 / 0704 094 393 /
+                          0790 222 885
                         </p>
                       </div>
                     </CardContent>
@@ -719,19 +732,19 @@ const Admissions = () => {
               <TabsContent value="bulk-enrollment">
                 <div className="max-w-4xl mx-auto">
                   <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2 text-2xl">
-                        <Users className="w-6 h-6" />
+                    <CardHeader className="px-4 sm:px-6">
+                      <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl">
+                        <Users className="w-6 h-6 flex-shrink-0" />
                         Sponsor/Agent Bulk Enrollment
                       </CardTitle>
 
-                      <p className="text-muted-foreground">
+                      <p className="text-sm sm:text-base text-muted-foreground">
                         Register multiple students under one sponsor
                         with consolidated invoicing
                       </p>
                     </CardHeader>
 
-                    <CardContent>
+                    <CardContent className="px-4 sm:px-6">
                       {enrollmentSuccess && (
                         <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200">
                           <div className="flex items-start gap-2">
@@ -762,13 +775,13 @@ const Admissions = () => {
                           className="space-y-6"
                         >
                           <Card>
-                            <CardHeader>
-                              <CardTitle className="flex items-center gap-2">
-                                <CreditCard className="w-6 h-6" />
+                            <CardHeader className="px-4 sm:px-6">
+                              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                                <CreditCard className="w-6 h-6 flex-shrink-0" />
                                 Pay Generated Invoice
                               </CardTitle>
 
-                              <p className="text-muted-foreground">
+                              <p className="text-sm sm:text-base text-muted-foreground break-words">
                                 Pay the invoice for your batch
                                 enrollment:{' '}
                                 <strong>
@@ -809,6 +822,7 @@ const Admissions = () => {
                           <div className="mt-4 text-center">
                             <Button
                               variant="outline"
+                              className="w-full sm:w-auto"
                               onClick={() => {
                                 setShowInvoicePayment(false);
                                 setGeneratedInvoice(null);
@@ -824,9 +838,9 @@ const Admissions = () => {
                           className="space-y-6"
                         >
                           {/* SPONSOR */}
-                          <div className="grid md:grid-cols-2 gap-4 p-4 border rounded-lg bg-blue-50">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg bg-blue-50">
                             <h4 className="md:col-span-2 font-semibold text-blue-900 flex items-center gap-2">
-                              <Building2 className="w-4 h-4" />
+                              <Building2 className="w-4 h-4 flex-shrink-0" />
                               Sponsor Information
                             </h4>
 
@@ -919,9 +933,9 @@ const Admissions = () => {
 
                           {/* STUDENTS */}
                           <div className="space-y-4">
-                            <div className="flex items-center justify-between">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                               <h4 className="font-semibold flex items-center gap-2">
-                                <Users className="w-4 h-4" />
+                                <Users className="w-4 h-4 flex-shrink-0" />
                                 Student Information ({students.length}{' '}
                                 students)
                               </h4>
@@ -931,6 +945,7 @@ const Admissions = () => {
                                 onClick={addStudent}
                                 variant="outline"
                                 size="sm"
+                                className="w-full sm:w-auto"
                               >
                                 <UserPlus className="w-4 h-4 mr-1" />
                                 Add Student
@@ -961,7 +976,7 @@ const Admissions = () => {
                                   )}
                                 </div>
 
-                                <div className="grid md:grid-cols-2 gap-3">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                   <div>
                                     <Label className="text-sm">
                                       Full Name *
